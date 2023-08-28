@@ -96,7 +96,7 @@ h1.site-logo a {
     padding: 6px 10px;
 }
 
-#navigation .search input.form-submit { 
+#navigation .search input.form-submit {
     text-decoration: none;
     font-family: Georgia, Palatino, serif;
     font-size: 10px;
@@ -110,7 +110,7 @@ h1.site-logo a {
     color: #b3b496;
 }
 
-#navigation .search input.form-submit:hover { 
+#navigation .search input.form-submit:hover {
     cursor: pointer;
     color: #E8D4AF;
 }

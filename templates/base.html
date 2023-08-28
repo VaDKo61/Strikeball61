@@ -8,12 +8,6 @@
     <link href=" {% static 'css/reset.css' %}" media="all" rel="stylesheet" type="text/css"/>
     <link href=" {% static 'css/front.css' %}" media="all" rel="stylesheet" type="text/css"/>
 
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="css/ie.css"/>
-    <script type="text/javascript" src="js/dd_belatedpng.js"></script>
-    <script> DD_belatedPNG.fix('.pngfix'); </script>
-    <![endif]-->
-
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.innerfade.js' %}"></script>
 
@@ -29,7 +23,7 @@
                         runningclass: 'innerfade'
                     });
             });
-    </script>
+      </script>
 </head>
 
 <body class="front">
@@ -38,11 +32,26 @@
 
     <div id="header">
         <h1 class="site-logo"><a href="{{title}}" class="pngfix">Paragon Stables</a></h1>
-    </div>
+        <div id="navigation">
+            <ul>
+                <li><a href="{{title}}">Главная</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="search">
+                <form action="#" method="post">
+                    <p><input type="text" name="search" class="form-text" />
+                    <input type="submit" value="Поиск" class="form-submit" /></p>
+                </form>
+            </div><!--End search  -->
+        </div><!--End navigation -->
+    </div><!--End header -->
+
+    {% block content %}
+    {% endblock %}
 
 </div> <!--End container -->
 </body>
 
-
-{% block content %}
-{% endblock %}
