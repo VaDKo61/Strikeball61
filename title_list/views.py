@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def description(request):
+    return render(request, 'title_list/index.html')
