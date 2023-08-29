@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('title_list.urls')),
+    path('poligons', include('polygons.urls'), name='poligons'),
 ]
