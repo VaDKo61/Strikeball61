@@ -11,8 +11,8 @@
     <div class="column-1">
         {% for polygon in object_list %}
         <div class="item">
-            <img src="files/sales/carmina.jpg" class="img-left" alt="carmina"/>
-            <h2>{{ polygon.name }}</h2>
+            <img src="{{ polygon.image.url }}" class="img-left" alt="{{ polygon.name }}"/>
+            <h2> {{ polygon.name }} <a href=" {{ polygon.get_url }}"> >>> </a></h2>
             <p>{{ polygon.descriptions }}</p>
             <p><strong>{{ polygon.address }}</strong></p>
             <p><strong>{{ polygon.coordinates }}</strong></p>
@@ -34,6 +34,5 @@
         </div>
 
     </div><!--End column-2  -->
-
 </div><!--End primary -->
 {% endblock %}
