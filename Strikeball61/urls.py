@@ -21,7 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('title_list.urls')),
-    path('polygons', include('polygons.urls'), name='polygons'),
+    path('polygons/', include('polygons.urls'), name='polygons'),
 ]
 
 if settings.DEBUG:

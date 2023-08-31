@@ -71,8 +71,8 @@
 } 
 
 #primary .column-1 {
-    width: 460px;
-    float: left;
+    width: 800px;
+    float: center;
     margin-top: 15px;
 }
 
@@ -162,6 +162,13 @@
 #primary .contact-form input.submit-button:hover { 
     cursor: pointer;
     color: #E8D4AF;
+}
+
+#primary .text {
+    text-decoration: none;
+    color: #e8d4af;
+    text:active;
+    text:hover;
 }
 
 /*Bottom Container ==============================    */

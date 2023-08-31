@@ -12,27 +12,10 @@
         {% for polygon in object_list %}
         <div class="item">
             <img src="{{ polygon.image.url }}" class="img-left" alt="{{ polygon.name }}"/>
-            <h2> {{ polygon.name }} <a href=" {{ polygon.get_url }}"> >>> </a></h2>
-            <p>{{ polygon.descriptions }}</p>
-            <p><strong>{{ polygon.address }}</strong></p>
-            <p><strong>{{ polygon.coordinates }}</strong></p>
+            <h2><a class="text" href="{{ polygon.get_url }}">{{ polygon.name }}</a></h2>
+            <p><a class="text" href="{{ polygon.get_url }}">{{ polygon.descriptions }}</a></p>
         </div>
         {% endfor %}
     </div><!--End column-1  -->
-
-
-    <div class="column-2">
-
-        <div class="item">
-            <img src="files/sales/linario.jpg" class="img-left" alt="linario"/>
-            <h2>Linario</h2>
-            <p>Linario is a wonderful, 5 year old, 16.2 hh, bay, gelding by the famous Holsteiner Stallion Linaro.
-                "Luke" has 3 good gaits with a particularly good canter, impeccable conformation and a fantastic
-                character and temperament. Already with an impressive show record, he recently scored 68% at First level
-                and is schooling all Second level movements with ease.</p>
-            <p><strong>$16,000 CDN</strong></p>
-        </div>
-
-    </div><!--End column-2  -->
 </div><!--End primary -->
 {% endblock %}
