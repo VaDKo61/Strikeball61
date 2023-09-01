@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<body>{{ polygons.name }}</body>
+<link href="{% static 'polygons/css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Полигоны</h3>
+    <h1 class="page-title">{{ polygons.name }}</h1>
+    <div class="column-1">
+        <div class="item">
+            <img src="{{ polygons.image_full.url }}" class="img-center" alt="{{ polygon.name }}"/>
+            <h2><a class="text">Как добраться:</a></h2>
+            <p><a class="text-2">{{ polygons.descriptions }}</a></p>
+            <p><a class="text-2">{{ polygons.address }}</a></p>
+            <p><a class="text-2">{{ polygons.coordinates }}</a></p>
+            <p><a class="text" href="{{ polygons.url_yandex }}">{{ polygons.url_yandex }}</a></p>
+        </div>
+    </div><!--End column-1  -->
+</div><!--End primary -->
 {% endblock %}

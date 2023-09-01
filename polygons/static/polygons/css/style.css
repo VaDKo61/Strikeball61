@@ -68,7 +68,13 @@
 #primary img.img-left {
     margin: 0 20px 5px 0; 
     float: left;
-} 
+}
+
+#primary img.img-center {
+    margin: 0 20px 5px 0;
+    float: center;
+    margin-bottom:30px;
+}
 
 #primary .column-1 {
     width: 800px;
@@ -169,6 +175,11 @@
     color: #e8d4af;
     text:active;
     text:hover;
+}
+
+#primary .text-2 {
+    font-size: 12px;
+    line-height: 15px;
 }
 
 /*Bottom Container ==============================    */
