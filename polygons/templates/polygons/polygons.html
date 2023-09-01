@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-dfgdf
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<link href="{% static 'polygons/css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Полигоны</h3>
+    <h1 class="page-title">Места проведения воскресных игр</h1>
+    <div class="column-1">
+        {% for polygon in object_list %}
+        <div class="item">
+            <img src="{{ polygon.image.url }}" class="img-left" alt="{{ polygon.name }}"/>
+            <h2><a class="text" href="{{ polygon.get_url }}">{{ polygon.name }}</a></h2>
+            <p><a class="text" href="{{ polygon.get_url }}">{{ polygon.descriptions }}</a></p>
+        </div>
+        {% endfor %}
+    </div><!--End column-1  -->
+</div><!--End primary -->
+{% endblock %}

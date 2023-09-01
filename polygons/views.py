@@ -1,6 +1,15 @@
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.generic import ListView, DetailView
+from .models import Polygons
 
 
-def choose_poligons(request):
-    return render(request, 'polygons/polygons.html')
+class ListPolygons(ListView):
+    model = Polygons
+    template_name = 'polygons/polygons.html'
+
+
+class DetailPolygons(DetailView):
+    model = Polygons
+    template_name = 'polygons/info_polygon.html'
+
