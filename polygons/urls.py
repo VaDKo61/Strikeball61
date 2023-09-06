@@ -1,7 +1,7 @@
 from django.urls import path
-from polygons.views import ListPolygons, DetailPolygons
+from polygons.views import *
 
 urlpatterns = [
-    path('', ListPolygons.as_view(), name='polygons'),
-    path('detail/<slug:slug>', DetailPolygons.as_view(), name='polygon-detail'),
+    path('', PolygonsListView.as_view(), name='polygons'),
+    path('<slug:slug>', PolygonsDetailView.as_view(), name='polygon-detail'),
 ]

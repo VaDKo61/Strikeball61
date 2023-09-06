@@ -183,6 +183,10 @@
     line-height: 15px;
 }
 
+#primary .text-3 {
+    width: 800px;
+}
+
 #primary .block-left {
     width: 50%;
     height: 800px;

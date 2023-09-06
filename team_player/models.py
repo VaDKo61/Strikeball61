@@ -26,7 +26,7 @@ class Player(models.Model):
     second_name = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
     gender = models.CharField(max_length=1, choices=gender_choose, default='M')
-    team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, related_name='in_team')
 
     def __str__(self):
         return f'{self.second_name} {self.first_name} '

@@ -1,6 +1,6 @@
 from django.urls import path
-from title_list import views
+from title_list.views import *
 
 urlpatterns = [
-    path('', views.description, name='title'),
+    path('', main_page, name='title'),
 ]

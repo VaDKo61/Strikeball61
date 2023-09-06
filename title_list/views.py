@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 
-def description(request):
+def main_page(request):
     return render(request, 'title_list/index.html')

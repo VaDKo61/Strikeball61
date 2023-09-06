@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('team_and_players', '0001_initial'),
+        ('team_player', '0001_initial'),
     ]
 
     operations = [
@@ -39,6 +39,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='team',
             name='players',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='team_and_players.player'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='team_player.player'),
         ),
     ]

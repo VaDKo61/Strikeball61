@@ -1,5 +1,5 @@
 from django.contrib import admin
-from team_and_players.models import Team, Player
+from team_player.models import Team, Player
 
 
 class MemberAdmin(admin.ModelAdmin):

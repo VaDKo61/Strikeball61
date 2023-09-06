@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('title_list.urls')),
     path('polygons/', include('polygons.urls'), name='polygons'),
-    path('team/', include('team_and_players.urls'), name='team_and_players')
+    path('team/', include('team_player.urls'), name='team_player')
 ]
 
 if settings.DEBUG:

@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class TeamAndPlayersConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'team_and_players'
+    name = 'team_player'

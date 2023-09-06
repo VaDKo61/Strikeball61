@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'title_list',
     'polygons',
-    'team_and_players',
+    'team_player',
 ]
 
 MIDDLEWARE = [

@@ -4,12 +4,12 @@ from django.views.generic import ListView, DetailView
 from .models import Polygons
 
 
-class ListPolygons(ListView):
+class PolygonsListView(ListView):
     model = Polygons
     template_name = 'polygons/polygons.html'
 
 
-class DetailPolygons(DetailView):
+class PolygonsDetailView(DetailView):
     model = Polygons
     template_name = 'polygons/info_polygon.html'
 

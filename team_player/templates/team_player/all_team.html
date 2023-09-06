@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<link href="{% static 'team_and_players/css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+<link href="{% static 'team_player/css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
 
 <div id="primary">
     <h3>&#187; Команды</h3>
@@ -12,9 +12,15 @@
             <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
             <h2><a class="block-right" href="{{ team.get_url }}">{{ team.name }}</a></h2>
             <p><a class="block-right" href="{{ team.get_url }}">{{ team.descriptions }}</a></p>
+            {% for player in players %}
+                {% if  player.team_id == team.id %}
+                    <p><a class="block-right">{{ player.first_name }}</a></p>
+                {% endif %}
+            {% endfor %}
             <p><a class="block-right">{{ team.players }}</a></p>
         </div>
         {% endfor %}
+
     </div><!--End column-1  -->
 </div><!--End primary -->
 {% endblock %}
