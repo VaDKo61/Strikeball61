@@ -1,3 +1,4 @@
 from django.contrib import admin
+from sunday_games.models import Game
 
-# Register your models here.
+admin.site.register(Game)

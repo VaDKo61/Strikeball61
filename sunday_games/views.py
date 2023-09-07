@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from sunday_games.models import *
 
-# Create your views here.
+
+class GameListView(ListView):
+    model = Game
+    template_name = 'sunday_games/all_games.html'

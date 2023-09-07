@@ -1,5 +1,6 @@
 from django.urls import path
+from sunday_games.views import *
 
 urlpatterns = [
-    # path('',)
+    path('', GameListView.as_view())
 ]
