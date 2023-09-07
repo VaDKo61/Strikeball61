@@ -119,7 +119,7 @@ h1.site-logo a {
 
 /*This makes the page degrade gracefully without javascript   */
 .scroller #fade {
-    height: 261px;    
+    height: 261px;
     float: left;
     margin-top: 5px;
     margin-right: 20px;
@@ -127,11 +127,11 @@ h1.site-logo a {
 }
 
 .scroller .innerfade {
-    height: 261px;    
+    height: 261px;
     float: left;
     margin-top: 5px;
     margin-right: 20px;
-    overflow: visible !important; 
+    overflow: visible !important;
 }
 
 .feature-content {
@@ -151,7 +151,7 @@ h1.site-logo a {
 
 #primary h1 a {
     font-weight: normal;
-    font-family: Georgia, Palatino, serif;  
+    font-family: Georgia, Palatino, serif;
     font-size: 50px;
     color: #a2ccd0;
     text-decoration: none;
@@ -178,15 +178,15 @@ h1.site-logo a {
 #bottom-container {
     background: url(images/bottom.jpg) repeat-x;
     margin-top: 30px;
-    border-bottom: 1px dotted #8a8571; 
+    border-bottom: 1px dotted #8a8571;
 }
 
-/*Secondary ==============================    */  
+/*Secondary ==============================    */
 
 #secondary .inside {padding: 30px;}
 
 #secondary {
-    float: left; 
+    float: left;
     width: 50%;
 }
 
@@ -214,7 +214,7 @@ h1.site-logo a {
 #secondary h4 a {
     text-decoration: none;
     color: #a2ccd0;
-    font-family: Georgia, Palatino, serif; 
+    font-family: Georgia, Palatino, serif;
     font-size: 15px;
     font-weight: normal;
 }
@@ -229,11 +229,11 @@ h1.site-logo a {
 }
 
 #secondary .item {
-    clear: both;    
+    clear: both;
     margin-bottom: 15px;
 }
 
-/*Tertiary ==============================    */  
+/*Tertiary ==============================    */
 
 #tertiary .inside {padding: 30px;}
 
@@ -255,7 +255,7 @@ h1.site-logo a {
 #tertiary h2 a {
     text-decoration: none;
     color: #a2ccd0;
-    font-family: Georgia, Palatino, serif; 
+    font-family: Georgia, Palatino, serif;
     font-size: 24px;
     font-weight: normal;
 }
