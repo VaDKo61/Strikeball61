@@ -23,22 +23,23 @@
 <div id="bottom-container">
     <div id="secondary">
         <div class="inside">
-            <h3>&#187; Полигоны</h3>
+            <h3>&#187; Команды и полигоны</h3>
             <div class="column">
-                <div class="item"><img src="files/residents/1.jpg" alt="Resident 1" /><h4><a href="#">UVM Flash</a></h4><p>16.1hh Morgan Stallion</p></div><!--End item-->
-                <div class="item"><img src="files/residents/2.jpg" alt="Resident 2" /><h4><a href="#">Anacacho Breeze</a></h4><p>16.3hh Saddlebred Mare</p></div><!--End item-->
-                <div class="item"><img src="files/residents/3.jpg" alt="Resident 3" /><h4><a href="#">SIH Surprise Bess</a></h4><p>15.3hh Morgan Mare</p></div><!--End item-->
-                <div class="item"><img src="files/residents/4.jpg" alt="Resident 4" /><h4><a href="#">Navaduur</a></h4><p>17.2hh Hanoverian Stallion</p></div><!--End item-->
+                {% for team in teams %}
+                <div class="item"><h4><a href="{{ team.get_url }}">{{ team.name }}</a></h4><p>{{ team.descriptions|truncatechars:30 }}</p></div>
+                {% endfor %}
+                <div class="clear-block"></div>
+                <p class="view-more"><a href="{% url 'team' %}">Больше &#187;</a>
             </div><!--End column-->
 
             <div class="column">
-                <div class="item"><img src="files/residents/5.jpg" alt="Resident 5" /><h4><a href="#">Sinclaire</a></h4><p>16.1hh Dutch Warmblood Mare</p></div><!--End item-->
-                <div class="item"><img src="files/residents/6.jpg" alt="Resident 6" /><h4><a href="#">Antiquity</a></h4><p>16.1hh AWS Mare</p></div><!--End item-->
-                <div class="item"><img src="files/residents/7.jpg" alt="Resident 7" /><h4><a href="#">Kongur fra Stora Hof</a></h4><p>14.3hh Icelandic Stallion</p></div><!--End item-->
-                <div class="item"><img src="files/residents/8.jpg" alt="Resident 8" /><h4><a href="#">Skips KID</a></h4><p>15.2hh AQHA Stallion</p></div><!--End item-->
+                {% for polygon in polygons %}
+                <div class="item"><h4><a href="{{ polygon.get_url }}">{{ polygon.name }}</a></h4><p>{{ polygon.address|truncatechars:30 }}</p></div>
+                {% endfor %}
+                <div class="clear-block"></div>
+                <p class="view-more"><a href="{% url 'polygons' %}">Больше &#187;</a></p>
             </div><!--End column-->
-            <div class="clear-block"></div>
-            <p class="view-more"><a href="#">Больше &#187;</a></p>
+
         </div><!--End inside -->
     </div><!--End secondary -->
     <div id="tertiary">

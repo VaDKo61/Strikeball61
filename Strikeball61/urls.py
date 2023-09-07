@@ -21,8 +21,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('title_list.urls')),
-    path('polygons/', include('polygons.urls'), name='polygons'),
-    path('team/', include('team_player.urls'), name='team_player')
+    path('polygons/', include('polygons.urls')),
+    path('team/', include('team_player.urls'))
 ]
 
 if settings.DEBUG:
