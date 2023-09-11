@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<link href= "{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css" />
+
+
+<div id="primary">
+    <h3>&#187; Воскрески</h3>
+    <h1 class="page-title">Ближайшие игры</h1>
+
+
+    <div class="column-1_1">
+        {% for game in object_list %}
+        <div class="item">
+            <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows" />
+            <h2> {{ game.polygon.name }} </h2>
+            <p class="submitted-2"> Дата: {{ game.date }} <br />
+                Адрес проведения: {{ game.polygon.address }} <br />
+            <p><a href="#">Информация</a></p>
+        </div>
+        {% endfor %}
+    </div><!--End column-1_1  -->
+
+
+    <div class="column-2-2">
+                <h2>Archive</h2>
+                <ul>
+                    <li><a href="#">2009</a></li>
+                    <li><a href="#">2008</a></li>
+                    <li><a href="#">2007</a></li>
+                    <li><a href="#">2006</a></li>
+                </ul>
+
+                <h2>Category</h2>
+                <ul>
+                    <li><a href="#">Show Results</a></li>
+                    <li><a href="#">Training Tips</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Stallions</a></li>
+                </ul>
+
+            </div><!--End column-2  -->
+
+ </div><!--End primary -->
+
+{% endblock %}

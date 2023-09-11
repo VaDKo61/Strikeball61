@@ -8,6 +8,7 @@
     <link href=" {% static 'css/reset.css' %}" media="all" rel="stylesheet" type="text/css"/>
     <link href=" {% static 'css/front.css' %}" media="all" rel="stylesheet" type="text/css"/>
 
+
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.innerfade.js' %}"></script>
 
@@ -37,7 +38,7 @@
                 <li><a href="{% url 'title' %}">Главная</a></li>
                 <li><a href="{% url 'polygons' %}">Полигоны</a></li>
                 <li><a href="{% url 'team' %}">Команды</a></li>
-                <li><a href="news.html">News</a></li>
+                <li><a href="{% url 'sunday_games' %}">Воскрески</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="search">
