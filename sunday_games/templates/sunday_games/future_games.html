@@ -16,33 +16,22 @@
         {% for game in object_list %}
         <div class="item">
             <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows" />
-            <h2> {{ game.polygon.name }} </h2>
-            <p class="submitted-2"> Дата: {{ game.date }} <br />
-                Адрес проведения: {{ game.polygon.address }} <br />
-            <p><a href="#">Информация</a></p>
+            <h3>Полигон:</h3>
+            <p class="text-4"> {{ game.polygon.name }} </p>
+            <h3>Дата:</h3>
+            <p class="submitted-2"> {{ game.date }} <br />
+            <a class="text-5" href="{{ game.get_url }}">Информация</a>
         </div>
         {% endfor %}
     </div><!--End column-1_1  -->
 
-
-    <div class="column-2-2">
-                <h2>Archive</h2>
+    <div class="column-2_2">
+                <h2>Архив</h2>
                 <ul>
-                    <li><a href="#">2009</a></li>
-                    <li><a href="#">2008</a></li>
-                    <li><a href="#">2007</a></li>
-                    <li><a href="#">2006</a></li>
+                    <li><a class="text" href="#">2022</a></li>
+                    <li><a class="text" href="#">2023</a></li>
                 </ul>
-
-                <h2>Category</h2>
-                <ul>
-                    <li><a href="#">Show Results</a></li>
-                    <li><a href="#">Training Tips</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Stallions</a></li>
-                </ul>
-
-            </div><!--End column-2  -->
+            </div><!--End column-2_2  -->
 
  </div><!--End primary -->
 

@@ -1,5 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+
+<link href= "{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css" />
+
+<div id="primary">
+    <h3>&#187; Воскрески</h3>
+    <h1 class="page-title">{{ game.date }}</h1>
+    <hr/>
+    <h3>Полигон:</h3>
+    <p><a class="text-5" href="{{ game.polygon.get_url }}">{{ game.polygon }}</a></p>
+    <hr/>
+    <h3>Организатор:</h3>
+    <p class="text-4">{{ game.organizer }}</p>
+    <hr/>
+    <h3>Начало игры:</h3>
+    <p class="text-4">{{ game.start }}</p>
+    <hr/>
+    <h3>Взнос:</h3>
+    <p class="text-4">{{ game.contribution }} руб.</p>
+    <hr/>
+    <h3>Сценарий:</h3>
+    <p class="text-4">{{ game.scenario }} </p>
+    <hr/>
+</div><!--End primary -->
 
 {% endblock %}

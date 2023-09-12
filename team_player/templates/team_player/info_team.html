@@ -9,14 +9,27 @@
     <h3>&#187; Команды</h3>
     <div class="column-1">
         <div class="item">
-            <h2><a class="text">{{ team.name }}</a></h2>
-            <p><a class="text-3">{{ team.descriptions }}</a></p>
+            <h1 class="page-title">{{ team.name }}</h1>
+            <p>
+            <p><a class="text-4">{{ team.descriptions }}</a></p>
+            <hr />
             <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
-            <p><a class="text-3"> Состав: </a></p>
-            {% for player in team.in_team.all %}
-                <p><a class="text-3">{{ player.second_name }} {{ player.first_name }}</a></p>
-            {% endfor %}
-
         </div>
+    </div>
+</div>
+
+<div id="primary">
+    <div class="column-1">
+        <h3>Состав:</h3>
+        <div class="item">
+            {% for player in team.in_team.all %}
+                <ul>
+                    <li class="text-3">{{ player.second_name }} {{ player.first_name }}</li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

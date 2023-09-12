@@ -77,8 +77,8 @@
 }
 
 #primary .column-1 {
-    width: 800px;
-    float: center;
+    width: 100%;
+    float: left;
     margin-top: 15px;
 }
 
@@ -94,7 +94,7 @@
     margin-top: 15px;
 }
 
-#primary .column-2-2 {
+#primary .column-2_2 {
     width: 150px;
     float: right;
     margin-top: 15px;
@@ -136,24 +136,37 @@
 }
 
 #primary .submitted-2 {
-    font-style: italic;
-    font-size: 11px;
+    font-style: arial;
+    font-size: 12px;
 }
 
 #primary .text {
     text-decoration: none;
-    color: #e8d4af;
+    color: #9fc5e8;
     text:active;
     text:hover;
 }
 
 #primary .text-2 {
-    font-size: 12px;
+    font-size: 11px;
     line-height: 15px;
 }
 
 #primary .text-3 {
     width: 400px;
+}
+
+#primary .text-4 {
+    font-size: 13px;
+}
+
+#primary .text-5 {
+    text-decoration: none;
+    color: #9fc5e8;
+    text:active;
+    text:hover;
+    font-size: 13px;
+    margin-right: 700px;
 }
 
 #primary .block-left {

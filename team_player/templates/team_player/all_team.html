@@ -10,14 +10,8 @@
         {% for team in object_list %}
         <div class="block-left">
             <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
-            <h2><a class="block-right" href="{{ team.get_url }}">{{ team.name }}</a></h2>
-            <p><a class="block-right" href="{{ team.get_url }}">{{ team.descriptions }}</a></p>
-            {% for player in players %}
-                {% if  player.team_id == team.id %}
-                    <p><a class="block-right">{{ player.first_name }}</a></p>
-                {% endif %}
-            {% endfor %}
-            <p><a class="block-right">{{ team.players }}</a></p>
+            <h2><a class="text" href="{{ team.get_url }}">{{ team.name }}</a></h2>
+            <p><a class="block-right">{{ team.descriptions }}</a></p>
         </div>
         {% endfor %}
 

@@ -10,11 +10,16 @@
     <div class="column-1">
         <div class="item-2">
             <img src="{{ polygons.image_full.url }}" class="img-center" alt="{{ polygon.name }}"/>
-            <h2><a class="text">Как добраться:</a></h2>
+            <h3>Как добраться:</h3>
             <p><a class="text-2">{{ polygons.descriptions }} </a></p>
+            <hr />
+            <h3>Адрес и координаты:</h3>
             <p><a class="text-2">{{ polygons.address }}</a></p>
-            <p><a class="text-2">{{ polygons.coordinates }}</a></p>
-            <p><a class="text" href="{{ polygons.url_yandex }}">{{ polygons.url_yandex }}</a></p>
+            <ul>
+                <li><a class="text-2">{{ polygons.coordinates }}</a></li>
+                <li><a class="text" href="{{ polygons.url_yandex }}">{{ polygons.url_yandex|truncatechars:50 }}</a></li>
+            </ul>
+
         </div>
     </div><!--End column-1_2  -->
 </div><!--End primary -->

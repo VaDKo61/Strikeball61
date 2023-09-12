@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from polygons.models import Polygons
 
 
@@ -11,6 +13,10 @@ class Game(models.Model):
     contribution = models.IntegerField(default=200)
     foto_games = models.ImageField(upload_to='sunday_games', blank=True)
     is_future = models.BooleanField(default=True)
+    slug = models.SlugField(default='', null=False)
 
     def __str__(self):
         return f'{self.date} {self.polygon}'
+
+    def get_url(self):
+        return reverse('detail_game', args=[self.slug])
