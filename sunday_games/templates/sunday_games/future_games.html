@@ -6,9 +6,8 @@
 
 <link href= "{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css" />
 
-
 <div id="primary">
-    <h3>&#187; Воскрески</h3>
+    <h3>&#187; Воскрески </h3>
     <h1 class="page-title">Ближайшие игры</h1>
 
 
@@ -28,7 +27,7 @@
     <div class="column-2_2">
                 <h2>Архив</h2>
                 <ul>
-                    <li><a class="text" href="#">2022</a></li>
+                    <li><a class="text" href=" {{ game.get_url_archive }} ">2022</a></li>
                     <li><a class="text" href="#">2023</a></li>
                 </ul>
             </div><!--End column-2_2  -->

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+
+{% for i in object_list %}
+
+{{ i.date }}
+
+{% endfor %}
+
+</body>
+
+{% endblock %}

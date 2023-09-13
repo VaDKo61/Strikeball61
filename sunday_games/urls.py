@@ -3,5 +3,6 @@ from sunday_games.views import *
 
 urlpatterns = [
     path('', GameListView.as_view(), name='sunday_games'),
-    path('<str:slug>', GameDetailView.as_view(), name='detail_game'),
+    path('detail/<str:slug>', GameDetailView.as_view(), name='detail_game'),
+    path('archive', GameArchiveListView.as_view(), name='archive_game'),
 ]

@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import redirect
 from django.urls import reverse
 
 from polygons.models import Polygons
@@ -20,3 +21,6 @@ class Game(models.Model):
 
     def get_url(self):
         return reverse('detail_game', args=[self.slug])
+
+    def get_url_archive(self):
+        return redirect('archive_game')
