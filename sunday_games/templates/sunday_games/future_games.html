@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<link href= "{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
 
 <div id="primary">
     <h3>&#187; Воскрески </h3>
@@ -14,24 +14,29 @@
     <div class="column-1_1">
         {% for game in object_list %}
         <div class="item">
-            <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows" />
+            <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows"/>
             <h3>Полигон:</h3>
             <p class="text-4"> {{ game.polygon.name }} </p>
             <h3>Дата:</h3>
-            <p class="submitted-2"> {{ game.date }} <br />
-            <a class="text-5" href="{{ game.get_url }}">Информация</a>
+            <p class="submitted-2"> {{ game.date }} <br/><a class="text-5" href="{{ game.get_url }}">Информация</a>
         </div>
         {% endfor %}
     </div><!--End column-1_1  -->
 
     <div class="column-2_2">
-                <h2>Архив</h2>
-                <ul>
-                    <li><a class="text" href=" {{ game.get_url_archive }} ">2022</a></li>
-                    <li><a class="text" href="#">2023</a></li>
-                </ul>
-            </div><!--End column-2_2  -->
+        <h2>Архив</h2>
+        <form action="{% url 'archive_game' %}" method="get">
+            {% csrf_token %}
+            <input name="year" type="submit" value="2022" />
+            <input name="year" type="submit" value="2023" />
+            <ul>
+                <li><a class="text" href=" {% url 'archive_game' %} " methods="post">2022</a></li>
+                <li><a class="text" href="#">2023</a></li>
+            </ul>
+        </form>
 
- </div><!--End primary -->
+    </div><!--End column-2_2  -->
+
+</div><!--End primary -->
 
 {% endblock %}
