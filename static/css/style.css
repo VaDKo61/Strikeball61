@@ -169,6 +169,15 @@
     margin-right: 700px;
 }
 
+#primary .text-6 {
+    text-decoration: none;
+    color: #9fc5e8;
+    text:active;
+    text:hover;
+    background-color: #5a5a4e;
+    display:inline
+}
+
 #primary .block-left {
     width: 50%;
     height: 250px;

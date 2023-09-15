@@ -8,7 +8,12 @@
 
 <div id="primary">
     <h3>&#187; Воскрески </h3>
-    <h1 class="page-title">Ближайшие игры</h1>
+
+    {% if archive %}
+        <h1 class="page-title">Архив {{ year }}</h1>
+    {% else %}
+        <h1 class="page-title">Ближайшие игры</h1>
+    {% endif %}
 
 
     <div class="column-1_1">
@@ -27,11 +32,9 @@
         <h2>Архив</h2>
         <form action="{% url 'archive_game' %}" method="get">
             {% csrf_token %}
-            <input name="year" type="submit" value="2022" />
-            <input name="year" type="submit" value="2023" />
             <ul>
-                <li><a class="text" href=" {% url 'archive_game' %} " methods="post">2022</a></li>
-                <li><a class="text" href="#">2023</a></li>
+                <li><input class="text-6" name="year" type="submit" value="2022" /></li>
+                <li><input class="text-6" name="year" type="submit" value="2023" /></li>
             </ul>
         </form>
 

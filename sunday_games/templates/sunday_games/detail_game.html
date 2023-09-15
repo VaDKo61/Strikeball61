@@ -15,15 +15,31 @@
     <h3>Организатор:</h3>
     <p class="text-4">{{ game.organizer }}</p>
     <hr/>
-    <h3>Начало игры:</h3>
-    <p class="text-4">{{ game.start }}</p>
-    <hr/>
-    <h3>Взнос:</h3>
-    <p class="text-4">{{ game.contribution }} руб.</p>
-    <hr/>
-    <h3>Сценарий:</h3>
-    <p class="text-4">{{ game.scenario }} </p>
-    <hr/>
+
+    {% if game.is_future %}
+        <h3>Начало игры:</h3>
+        <p class="text-4">{{ game.start }}</p>
+        <hr/>
+        <h3>Взнос:</h3>
+        <p class="text-4">{{ game.contribution }} руб.</p>
+        <hr/>
+        <h3>Сценарий:</h3>
+        <p class="text-4">{{ game.scenario }} </p>
+        {% if game.foto_scenario %}
+            <img src=" {{ game.foto_scenario.url }} " class="img-left" alt="spruce meadows"/>
+        {% endif %}
+        <hr/>
+    {% else %}
+        <h3>Фотографии с игры:</h3>
+
+        {% if game.goto_games %}
+            <img src=" {{ game.foto_games.url }} " class="img-left" alt="spruce meadows"/>
+        {% else %}
+            <p class="text-4">Фото будут позже</p>
+        {% endif %}
+        <hr/>
+    {% endif %}
+
 </div><!--End primary -->
 
 {% endblock %}

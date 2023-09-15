@@ -6,11 +6,10 @@ from sunday_games.models import *
 
 class GameListView(ListView):
     model = Game
-    template_name = 'sunday_games/future_games.html'
+    template_name = 'sunday_games/lsit_games.html'
 
     def get_queryset(self):
-        query = self.request.GET.get('button')
-        return Game.objects.filter(is_future=True)
+        return Game.objects.filter(is_future=True).order_by('date')
 
 
 class GameDetailView(DetailView):
@@ -20,13 +19,14 @@ class GameDetailView(DetailView):
 
 class GameArchiveListView(ListView):
     model = Game
-    template_name = 'sunday_games/archive_game.html'
+    template_name = 'sunday_games/lsit_games.html'
 
     def get_queryset(self):
         year = self.request.GET.get('year')
-        return Game.objects.filter(Q(date__year=year) & Q(is_future=False))
+        return Game.objects.filter(Q(date__year=year) & Q(is_future=False)).order_by('date')
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(GameListView, self).get_context_data(**kwargs)
-    #     context['polygonse'] = Polygons.objects.all()
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super(GameArchiveListView, self).get_context_data(**kwargs)
+        context['archive'] = True
+        context['year'] = self.request.GET.get('year')
+        return context
