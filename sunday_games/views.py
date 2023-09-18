@@ -1,6 +1,8 @@
 from django.db.models import Q
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, FormView
+
+from sunday_games.forms import SundayForms
 from sunday_games.models import *
 
 
@@ -30,3 +32,8 @@ class GameArchiveListView(ListView):
         context['archive'] = True
         context['year'] = self.request.GET.get('year')
         return context
+
+
+class GameArchiveFormView(FormView):
+    form_class = SundayForms
+    template_name = 'sunday_games/create_game.html'

@@ -6,9 +6,11 @@ from polygons.models import Polygons
 
 
 class Game(models.Model):
+    organizer_choose = [('STRIKE61', 'STRIKE61'),
+                        ]
     date = models.DateField(verbose_name='date')
     polygon = models.ForeignKey(Polygons, on_delete=models.CASCADE, null=True, related_name='games_polygon')
-    organizer = models.CharField(max_length=50, default='STRIKE61')
+    organizer = models.CharField(max_length=50, choices=organizer_choose, default='STRIKE61')
     start = models.TimeField(default='10:00')
     scenario = models.TextField(max_length=10000)
     foto_scenario = models.ImageField(upload_to='sunday_games_scenario', blank=True)
