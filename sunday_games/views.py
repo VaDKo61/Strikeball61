@@ -1,5 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render
+from django.views import View
 from django.views.generic import ListView, DetailView, FormView
 
 from sunday_games.forms import SundayForms
@@ -8,7 +9,7 @@ from sunday_games.models import *
 
 class GameListView(ListView):
     model = Game
-    template_name = 'sunday_games/lsit_games.html'
+    template_name = 'sunday_games/list_games.html'
 
     def get_queryset(self):
         return Game.objects.filter(is_future=True).order_by('date')
@@ -21,7 +22,7 @@ class GameDetailView(DetailView):
 
 class GameArchiveListView(ListView):
     model = Game
-    template_name = 'sunday_games/lsit_games.html'
+    template_name = 'sunday_games/list_games.html'
 
     def get_queryset(self):
         year = self.request.GET.get('year')
@@ -34,6 +35,19 @@ class GameArchiveListView(ListView):
         return context
 
 
-class GameArchiveFormView(FormView):
+class GameFormView(FormView):
     form_class = SundayForms
     template_name = 'sunday_games/create_game.html'
+    success_url = '/sunday_games'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+class GameEditView(View):
+
+    def get(self, request, slug_game):
+        game = Game.objects.get(slug=slug_game)
+        form = SundayForms(instance=game)
+        return render(request, 'sunday_games/create_game.html', context={'form': form})

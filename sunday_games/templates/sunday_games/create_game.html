@@ -17,41 +17,8 @@
                 <hr/>
             {% endfor %}
             <button type="submit">Отправить</button>
+            <hr/>
         </form>
-        <h3>Дата:</h3>
-        <hr/>
-        <h3>Полигон:</h3>
-        <p><a class="text-5" href="{{ game.polygon.get_url }}">{{ game.polygon }}</a></p>
-        <hr/>
-        <h3>Организатор:</h3>
-        <p class="text-4">{{ game.organizer }}</p>
-        <hr/>
-
-
-    {% if game.is_future %}
-        <h3>Начало игры:</h3>
-        <p class="text-4">{{ game.start }}</p>
-        <hr/>
-        <h3>Взнос:</h3>
-        <p class="text-4">{{ game.contribution }} руб.</p>
-        <hr/>
-        <h3>Сценарий:</h3>
-        <p class="text-4">{{ game.scenario }} </p>
-        {% if game.foto_scenario %}
-            <img src=" {{ game.foto_scenario.url }} " class="img-left" alt="spruce meadows"/>
-        {% endif %}
-        <hr/>
-    {% else %}
-        <h3>Фотографии с игры:</h3>
-
-        {% if game.goto_games %}
-            <img src=" {{ game.foto_games.url }} " class="img-left" alt="spruce meadows"/>
-        {% else %}
-            <p class="text-4">Фото будут позже</p>
-        {% endif %}
-        <hr/>
-    {% endif %}
-
 </div><!--End primary -->
 
 {% endblock %}
