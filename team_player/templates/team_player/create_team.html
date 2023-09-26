@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href= "{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css" />
+
+<div id="primary">
+    <h3>&#187; Воскрески</h3>
+
+        <h1 class="page-title">Детали игры</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <h3>{{ field.label_tag }}</h3>
+                {{ field }}
+                <hr/>
+            {% endfor %}
+            <button type="submit">Отправить</button>
+            <hr/>
+        </form>
+</div><!--End primary -->
+
+{% endblock %}
