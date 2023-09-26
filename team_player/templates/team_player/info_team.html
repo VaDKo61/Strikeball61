@@ -13,12 +13,13 @@
             <p>
             <p><a class="text-4">{{ team.descriptions }}</a></p>
             <hr />
-            <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
+            {% if team.logo %}
+                <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
+            {% else %}
+                <img src="{% static 'images/no-logo.jpg' %}" class="img-left" alt="{{ team.name }}"/>
+            {% endif%}
         </div>
     </div>
-</div>
-
-<div id="primary">
     <div class="column-1">
         <h3>Состав:</h3>
         <div class="item">
@@ -29,7 +30,9 @@
             {% endfor %}
         </div>
     </div>
+    <div class="item">
+        <p><a class="text-5" href="{{ team.get_url_edit }}">Редактировать</a></p>
+    </div>
 </div>
-
 
 {% endblock %}

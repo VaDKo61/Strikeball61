@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
@@ -50,4 +51,12 @@ class GameEditView(View):
     def get(self, request, slug_game):
         game = Game.objects.get(slug=slug_game)
         form = SundayForms(instance=game)
+        return render(request, 'sunday_games/create_game.html', context={'form': form})
+
+    def post(self, request, slug_game):
+        game = Game.objects.get(slug=slug_game)
+        form = SundayForms(request.POST, instance=game)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('sunday_games'))
         return render(request, 'sunday_games/create_game.html', context={'form': form})

@@ -9,12 +9,19 @@
     <div class="column-1">
         {% for team in object_list %}
         <div class="block-left">
-            <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
+            {% if team.logo %}
+                <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
+            {% else %}
+                <img src="{% static 'images/no-logo.jpg' %}" class="img-left" alt="{{ team.name }}"/>
+            {% endif%}
             <h2><a class="text" href="{{ team.get_url }}">{{ team.name }}</a></h2>
             <p><a class="block-right">{{ team.descriptions }}</a></p>
         </div>
         {% endfor %}
-
     </div><!--End column-1  -->
+    <div>
+        <p><a class="text-5" href="{% url 'team_create' %}">Добавить команду</a></p>
+        <hr>
+    </div>
 </div><!--End primary -->
 {% endblock %}

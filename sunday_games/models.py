@@ -27,7 +27,7 @@ class Game(models.Model):
     def save(self, *args, **kwargs):
         self.is_future = True if self.date > datetime.now().date() else False
         self.slug = slugify(self.date)
-        super().save(*args, **kwargs)
+        super(Game, self).save(*args, **kwargs)
 
     def get_url(self):
         return reverse('detail_game', args=[self.slug])

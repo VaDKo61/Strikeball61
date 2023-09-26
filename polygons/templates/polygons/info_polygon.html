@@ -9,7 +9,11 @@
     <h1 class="page-title">{{ polygons.name }}</h1>
     <div class="column-1">
         <div class="item-2">
-            <img src="{{ polygons.image_full.url }}" class="img-center" alt="{{ polygon.name }}"/>
+            {% if polygon.image %}
+                <img src="{{ polygons.image_full.url }}" class="img-center" alt="{{ polygon.name }}"/>
+            {% else %}
+                <img src="{% static 'images/no-logo.jpg' %}" class="img-center" alt="{{ polygon.name }}"/>
+            {% endif%}
             <h3>Как добраться:</h3>
             <p><a class="text-2">{{ polygons.descriptions }} </a></p>
             <hr />
@@ -19,7 +23,9 @@
                 <li><a class="text-2">{{ polygons.coordinates }}</a></li>
                 <li><a class="text" href="{{ polygons.url_yandex }}">{{ polygons.url_yandex|truncatechars:50 }}</a></li>
             </ul>
-
+        </div>
+        <div class ="item">
+            <p><a class="text-5" href="{{ polygons.get_url_edit }}">Редактировать</a></p>
         </div>
     </div><!--End column-1_2  -->
 </div><!--End primary -->

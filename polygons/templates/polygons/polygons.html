@@ -8,14 +8,21 @@
 <div id="primary">
     <h3>&#187; Полигоны</h3>
     <h1 class="page-title">Места проведения воскресных игр</h1>
+    {% for polygon in object_list %}
     <div class="column-1">
-        {% for polygon in object_list %}
         <div class="item">
-            <img src="{{ polygon.image.url }}" class="img-left" alt="{{ polygon.name }}"/>
+            {% if polygon.image %}
+                <img src="{{ polygon.image.url }}" class="img-left" alt="{{ polygon.name }}"/>
+            {% else %}
+                <img src="{% static 'images/no-logo.jpg' %}" class="img-left" alt="{{ polygon.name }}"/>
+            {% endif%}
             <h2><a class="text" href="{{ polygon.get_url }}">{{ polygon.name }}</a></h2>
             <p><a>{{ polygon.descriptions }}</a></p>
         </div>
-        {% endfor %}
     </div><!--End column-1  -->
+    {% endfor %}
+     <div class="item">
+            <p><a class="text-5" href="{% url 'polygon-create' %}">Добавить полигон</a></p>
+     </div>
 </div><!--End primary -->
 {% endblock %}
