@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
+from django_admin_geomap import geomap_context
 
 from .forms import PolygonForms
 from .models import Polygons
@@ -11,6 +12,12 @@ from .models import Polygons
 class PolygonsListView(ListView):
     model = Polygons
     template_name = 'polygons/polygons.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PolygonsListView, self).get_context_data(**kwargs)
+        for i, j in geomap_context(Polygons.objects.all()).items():
+            context[i] = j
+        return context
 
 
 class PolygonDetailView(DetailView):

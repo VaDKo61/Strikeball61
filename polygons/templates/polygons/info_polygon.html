@@ -20,7 +20,7 @@
             <h3>Адрес и координаты:</h3>
             <p><a class="text-2">{{ polygons.address }}</a></p>
             <ul>
-                <li><a class="text-2">{{ polygons.coordinates }}</a></li>
+                <li><a class="text-2">{{ polygons.lon }}, {{ polygons.lat }}</a></li>
                 <li><a class="text" href="{{ polygons.url_yandex }}">{{ polygons.url_yandex|truncatechars:50 }}</a></li>
             </ul>
         </div>
