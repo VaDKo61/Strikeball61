@@ -58,5 +58,5 @@ class GameEditView(View):
         form = SundayForms(request.POST, instance=game)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('sunday_games'))
+            return HttpResponseRedirect(reverse('detail_game', args=(slug_game, )))
         return render(request, 'sunday_games/create_game.html', context={'form': form})

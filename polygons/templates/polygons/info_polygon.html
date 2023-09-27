@@ -22,6 +22,11 @@
             <ul>
                 <li><a class="text-2">{{ polygons.lon }}, {{ polygons.lat }}</a></li>
                 <li><a class="text" href="{{ polygons.url_yandex }}">{{ polygons.url_yandex|truncatechars:50 }}</a></li>
+                <li>
+                    <div>
+                        {% include 'geomap/common.html' %}
+                    </div>
+                </li>
             </ul>
         </div>
         <div class ="item">

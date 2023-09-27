@@ -12,8 +12,8 @@ class Polygons(models.Model, GeoItem):
     image_full = models.ImageField(upload_to='polygons/full', default='', blank=True)
     url_yandex = models.CharField(default='', max_length=500)
     slug = models.SlugField(default='', null=False)
-    lon = models.FloatField(default='47.246355')
-    lat = models.FloatField(default='39.715209')
+    lon = models.FloatField(default='39.715209')
+    lat = models.FloatField(default='47.246355')
 
     def __str__(self):
         return f'{self.name}'
