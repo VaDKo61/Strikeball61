@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
+from django_admin_geomap import geomap_context
 
 from .forms import PolygonForms
 from .models import Polygons
@@ -12,10 +13,25 @@ class PolygonsListView(ListView):
     model = Polygons
     template_name = 'polygons/polygons.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(PolygonsListView, self).get_context_data(**kwargs)
+        for i, j in geomap_context(Polygons.objects.all(), map_longitude='39.7', map_latitude='47.2',
+                                   map_zoom='10.5').items():
+            context[i] = j
+        return context
+
 
 class PolygonDetailView(DetailView):
     model = Polygons
     template_name = 'polygons/info_polygon.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PolygonDetailView, self).get_context_data(**kwargs)
+        for i, j in geomap_context(*kwargs.items(), map_longitude=f"{kwargs['object'].lon}",
+                                   map_latitude=f"{kwargs['object'].lat}",
+                                   map_zoom='14').items():
+            context[i] = j
+        return context
 
 
 class PolygonFormView(FormView):
@@ -40,5 +56,5 @@ class PolygonEditView(View):
         form = PolygonForms(request.POST, instance=polygon)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('polygons'))
+            return HttpResponseRedirect(reverse('polygon-detail', args=(slug_polygon, )))
         return render(request, 'polygons/create_polygon.html', context={'form': form})

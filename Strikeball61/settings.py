@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'polygons',
     'team_player',
     'sunday_games',
+    'django_admin_geomap',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates'
+            BASE_DIR / 'templates',
+            'path/to/installed/django_admin_geomap/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {

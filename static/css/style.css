@@ -179,12 +179,21 @@
 }
 
 #primary .block-left {
-    width: 50%;
+    width: 470px;
     height: 250px;
     overflow: auto;
     float:left;
-
+    margin-right: 10px
 }
+
+#primary .block-left-2 {
+    width: 100%;
+    height: 250px;
+    overflow: auto;
+    float:left;
+    margin-right: 10px
+}
+
 #primary .block-right {
     width: 50%;
     height: 200px;
