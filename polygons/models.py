@@ -9,7 +9,6 @@ class Polygons(models.Model, GeoItem):
     address = models.CharField(max_length=100)
     descriptions = models.CharField(max_length=1000)
     image = models.ImageField(upload_to='polygons/', blank=True)
-    image_full = models.ImageField(upload_to='polygons/full', default='', blank=True)
     url_yandex = models.CharField(default='', max_length=500)
     slug = models.SlugField(default='', null=False)
     lon = models.FloatField(default='39.715209')
