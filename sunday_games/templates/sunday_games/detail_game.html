@@ -15,21 +15,22 @@
     <h3>Организатор:</h3>
     <p class="text-4">{{ game.organizer }}</p>
     <hr/>
-
     {% if game.is_future %}
         <h3>Начало игры:</h3>
-        <p class="text-4">{{ game.start }}</p>
-        <hr/>
-        <h3>Взнос:</h3>
-        <p class="text-4">{{ game.contribution }} руб.</p>
-        <hr/>
-        <h3>Сценарий:</h3>
-        <p class="text-4">{{ game.scenario|linebreaksbr }}</p>
-        {% if game.foto_scenario %}
-            <img src=" {{ game.foto_scenario.url }} " class="img-left" alt="spruce meadows"/>
-        {% endif %}
-        <hr/>
-        <div class="block-left-3">
+            <p class="text-4">{{ game.start }}</p>
+            <hr/>
+            <h3>Взнос:</h3>
+            <p class="text-4">{{ game.contribution }} руб.</p>
+            <hr/>
+    {% endif %}
+    <h3>Сценарий:</h3>
+    <p class="text-4">{{ game.scenario|linebreaksbr }}</p>
+    {% if game.foto_scenario %}
+        <img src=" {{ game.foto_scenario.url }} " class="img-left" alt="spruce meadows"/>
+    {% endif %}
+    <hr/>
+    {% if game.is_future %}
+        <div class="column-1">
             <h3>Ожидаемая погода на полигоне:</h3>
             {% if error %}
                 <p class="text-4">Погода временно недоступна</p>
@@ -99,31 +100,41 @@
             {% else %}
                 <p class="text-4">До события еще много дней</p>
             {% endif %}
+            <hr/>
         </div>
     {% else %}
-        <h3>Фотографии с игры:</h3>
-        {% if game.goto_games %}
-            <img src=" {{ game.foto_games.url }} " class="img-left" alt="spruce meadows"/>
-        {% else %}
-            <p class="text-4">Фото будут позже</p>
-        {% endif %}
-        <hr/>
+        <div class="column-1">
+            <h3>Итоги игры:</h3>
+            <p class="text-4">{{ game.result }}</p>
+             <hr/>
+            <h3>Фотографии с игры:</h3>
+            {% if game.goto_games %}
+                <img src=" {{ game.foto_games.url }} " class="img-left" alt="spruce meadows"/>
+            {% else %}
+                <p class="text-4">Фотографии будут позже</p>
+            {% endif %}
+            <hr/>
+        </div>
+
     {% endif %}
     <div>
         <p><a class="text-5" href="{{ game.get_url_edit }}">Редактировать</a></p>
+        <hr/>
     </div>
 </div><!--End primary -->
 
-<div id="openweathermap-widget-11"></div>
-<script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
-<script>
-    window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
-    window.myWidgetParam.push({id: 11,cityid: '501175',appid: '7a3670af0bfab65efc9bb9347cc07364',units: 'metric',containerid: 'openweathermap-widget-11',  });
-    (function() {var script = document.createElement('script');
-    script.async = true;script.charset = "utf-8";
-    script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(script, s);  })();
-</script>
+{% if game.is_future %}
+    <div id="openweathermap-widget-11"></div>
+    <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+    <script>
+        window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+        window.myWidgetParam.push({id: 11,cityid: '501175',appid: '7a3670af0bfab65efc9bb9347cc07364',units: 'metric',containerid: 'openweathermap-widget-11',  });
+        (function() {var script = document.createElement('script');
+        script.async = true;script.charset = "utf-8";
+        script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(script, s);  })();
+    </script>
+{% endif%}
 
 {% endblock %}

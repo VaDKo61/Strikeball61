@@ -26,9 +26,11 @@
             <p class="submitted-2"> {{ game.date }} <br/><a class="text-5" href="{{ game.get_url }}">Информация</a>
         </div>
         {% endfor %}
-        <div class="item">
-            <p><a class="text-5" href="{% url 'create_game' %}">Добавить игру</a></p>
-        </div>
+        {% if not archive %}
+            <div class="item">
+                <p><a class="text-5" href="{% url 'create_game' %}">Добавить игру</a></p>
+            </div>
+        {% endif %}
     </div><!--End column-1_1  -->
 
     <div class="column-2_2">
