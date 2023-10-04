@@ -157,7 +157,9 @@
 }
 
 #primary .text-4 {
-    font-size: 13px;
+    font-size: 12px;
+    width: 950px;
+    white-space: pre-wrap;
 }
 
 #primary .text-5 {
@@ -194,6 +196,11 @@
     margin-right: 10px
 }
 
+#primary .block-left-3 {
+    float:left;
+    width: 350px;
+}
+
 #primary .block-right {
     width: 50%;
     height: 200px;
@@ -203,3 +210,20 @@
     text: active;
     text: hover;
     }
+
+#primary .table {
+    font: Palatino;
+    width: 650px;
+    font-size: 14px;
+    color: #e8d4af;
+    text-align: center;
+}
+
+#primary td {
+    height: 25px;
+}
+
+#primary th {
+    height: 25px;
+    color: #d1a773;
+}

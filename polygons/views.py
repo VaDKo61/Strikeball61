@@ -14,6 +14,7 @@ class PolygonsListView(ListView):
     template_name = 'polygons/polygons.html'
 
     def get_context_data(self, **kwargs):
+        """Add the parameters to display objects on the map"""
         context = super(PolygonsListView, self).get_context_data(**kwargs)
         for i, j in geomap_context(Polygons.objects.all(), map_longitude='39.7', map_latitude='47.2',
                                    map_zoom='10.5').items():
@@ -26,6 +27,7 @@ class PolygonDetailView(DetailView):
     template_name = 'polygons/info_polygon.html'
 
     def get_context_data(self, **kwargs):
+        """Add the parameters to display on the map"""
         context = super(PolygonDetailView, self).get_context_data(**kwargs)
         for i, j in geomap_context(*kwargs.items(), map_longitude=f"{kwargs['object'].lon}",
                                    map_latitude=f"{kwargs['object'].lat}",
@@ -56,5 +58,5 @@ class PolygonEditView(View):
         form = PolygonForms(request.POST, instance=polygon)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('polygon-detail', args=(slug_polygon, )))
+            return HttpResponseRedirect(reverse('polygon-detail', args=(slug_polygon,)))
         return render(request, 'polygons/create_polygon.html', context={'form': form})

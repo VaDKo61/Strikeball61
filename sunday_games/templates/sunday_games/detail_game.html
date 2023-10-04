@@ -24,14 +24,84 @@
         <p class="text-4">{{ game.contribution }} руб.</p>
         <hr/>
         <h3>Сценарий:</h3>
-        <p class="text-4">{{ game.scenario }} </p>
+        <p class="text-4">{{ game.scenario|linebreaksbr }}</p>
         {% if game.foto_scenario %}
             <img src=" {{ game.foto_scenario.url }} " class="img-left" alt="spruce meadows"/>
         {% endif %}
         <hr/>
+        <div class="block-left-3">
+            <h3>Ожидаемая погода на полигоне:</h3>
+            {% if error %}
+                <p class="text-4">Погода временно недоступна</p>
+            {% elif weather_dict %}
+                <table class="table"><!--weather -->
+                    <colgroup>
+                        <col width="140"/>
+                        <col span="4" width="100"/>
+                    </colgroup>
+                    <tr>
+                        <td></td>
+                        <td>{{ weather_dict.time_09.time }}</td>
+                        <td>{{ weather_dict.time_12.time }}</td>
+                        <td>{{ weather_dict.time_15.time }}</td>
+                        <td>{{ weather_dict.time_18.time }}</td>
+                    </tr>
+                    <tr>
+                        <td align="left">&#9642 Общая:</td>
+                        <td>{{ weather_dict.time_09.description }}</td>
+                        <td>{{ weather_dict.time_12.description }}</td>
+                        <td>{{ weather_dict.time_15.description }}</td>
+                        <td>{{ weather_dict.time_18.description }}</td>
+                    </tr>
+                    <tr style="color: #ffb86e">
+                        <td align="left">&#9642 Температура, &#176;С:</td>
+                        <td>{{ weather_dict.time_09.temp }}</td>
+                        <td>{{ weather_dict.time_12.temp }}</td>
+                        <td>{{ weather_dict.time_15.temp }}</td>
+                        <td>{{ weather_dict.time_18.temp }}</td>
+                    </tr>
+                    <tr style="color: #ff8200">
+                        <td align="left">&#9642 Ощущается, &#176;С:</td>
+                        <td>{{ weather_dict.time_09.feels_like }}</td>
+                        <td>{{ weather_dict.time_12.feels_like }}</td>
+                        <td>{{ weather_dict.time_15.feels_like }}</td>
+                        <td>{{ weather_dict.time_18.feels_like }}</td>
+                    </tr>
+                    <tr>
+                        <td align="left">&#9642 Видимость, км:</td>
+                        <td>{{ weather_dict.time_09.visibility }}</td>
+                        <td>{{ weather_dict.time_12.visibility }}</td>
+                        <td>{{ weather_dict.time_15.visibility }}</td>
+                        <td>{{ weather_dict.time_18.visibility }}</td>
+                    </tr>
+                    <tr style="color: #9fc5e8">
+                        <td align="left">&#9642 Скорость ветра, м/с:</td>
+                        <td>{{ weather_dict.time_09.speed }}</td>
+                        <td>{{ weather_dict.time_12.speed }}</td>
+                        <td>{{ weather_dict.time_15.speed }}</td>
+                        <td>{{ weather_dict.time_18.speed }}</td>
+                    </tr>
+                    <tr style="color: #9fc5e8">
+                        <td align="left">&#9642 Порывы ветра, м/с:</td>
+                        <td>{{ weather_dict.time_09.gust }}</td>
+                        <td>{{ weather_dict.time_12.gust }}</td>
+                        <td>{{ weather_dict.time_15.gust }}</td>
+                        <td>{{ weather_dict.time_18.gust }}</td>
+                    </tr>
+                    <tr style="color: #1783e3" >
+                        <td align="left">&#9642 Вероятность осадков, %:</td>
+                        <td>{{ weather_dict.time_09.pop }}</td>
+                        <td>{{ weather_dict.time_12.pop }}</td>
+                        <td>{{ weather_dict.time_15.pop }}</td>
+                        <td>{{ weather_dict.time_18.pop }}</td>
+                    </tr>
+                </table>
+            {% else %}
+                <p class="text-4">До события еще много дней</p>
+            {% endif %}
+        </div>
     {% else %}
         <h3>Фотографии с игры:</h3>
-
         {% if game.goto_games %}
             <img src=" {{ game.foto_games.url }} " class="img-left" alt="spruce meadows"/>
         {% else %}
@@ -43,5 +113,17 @@
         <p><a class="text-5" href="{{ game.get_url_edit }}">Редактировать</a></p>
     </div>
 </div><!--End primary -->
+
+<div id="openweathermap-widget-11"></div>
+<script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+<script>
+    window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+    window.myWidgetParam.push({id: 11,cityid: '501175',appid: '7a3670af0bfab65efc9bb9347cc07364',units: 'metric',containerid: 'openweathermap-widget-11',  });
+    (function() {var script = document.createElement('script');
+    script.async = true;script.charset = "utf-8";
+    script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(script, s);  })();
+</script>
 
 {% endblock %}

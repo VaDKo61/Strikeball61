@@ -6,9 +6,8 @@ from sunday_games.models import Game
 class SundayForms(forms.ModelForm):
     class Meta:
         model = Game
-        exclude = ('is_future', 'slug', 'result')
+        exclude = ('date', 'is_future', 'slug', 'result')
         labels = {
-            'date': 'Дата',
             'polygon': 'Полигон',
             'organizer': 'Организатор',
             'start': 'Начало игры',
@@ -20,4 +19,5 @@ class SundayForms(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(format=('%Y-%m-%d'), attrs={'type': 'date'}),
             'start': forms.TimeInput(attrs={'type': 'time'}),
+            'scenario': forms.Textarea(attrs={"cols": "80", "rows": "30"})
         }

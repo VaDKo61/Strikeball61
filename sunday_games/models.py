@@ -25,8 +25,8 @@ class Game(models.Model):
         return f'{self.date} {self.polygon}'
 
     def save(self, *args, **kwargs):
-        self.is_future = True if self.date > datetime.now().date() else False
-        self.slug = slugify(self.date)
+        self.is_future = True if self.date >= datetime.now().date() else False
+        self.slug = slugify(f'{self.date} {self.polygon}')
         super(Game, self).save(*args, **kwargs)
 
     def get_url(self):

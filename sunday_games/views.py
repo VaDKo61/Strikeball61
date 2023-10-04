@@ -1,8 +1,11 @@
+import json
+import requests
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
+from requests import HTTPError
 
 from sunday_games.forms import SundayForms
 from sunday_games.models import *
@@ -20,16 +23,54 @@ class GameDetailView(DetailView):
     model = Game
     template_name = 'sunday_games/detail_game.html'
 
+    def get_context_data(self, **kwargs):
+        """add the weather for the future game"""
+        context = super(GameDetailView, self).get_context_data(**kwargs)
+        context['error'] = False
+        if self.object.is_future:
+            api_key = '7a3670af0bfab65efc9bb9347cc07364'
+            lang = 'ru'
+            units = 'metric'
+            try:
+                api_response = requests.get(
+                    f'https://api.openweathermap.org/data/2.5/forecast?lat={self.object.polygon.lat}&'
+                    f'lon={self.object.polygon.lon}&appid={api_key}&units={units}&lang={lang}')
+                api_response.raise_for_status()
+            except HTTPError:
+                context['error'] = True
+            else:
+                json_response = json.loads(api_response.text)
+                weather_dict = {}
+                date_game = str(self.object.date)
+                for dict_weather in json_response['list']:
+                    if dict_weather['dt_txt'][:10] == date_game:
+                        weather_dict[f'time_{dict_weather["dt_txt"][11:13]}'] = {
+                            'description': dict_weather['weather'][0]['description'],
+                            'temp': round(dict_weather['main']['temp']),
+                            'feels_like': round(dict_weather['main']['feels_like']),
+                            'visibility': dict_weather['visibility'] // 1000,
+                            'speed': round(dict_weather['wind']['speed'], 1),
+                            'gust': round(dict_weather['wind']['gust'], 1),
+                            'pop': round(dict_weather['pop'] * 100),
+                            'rain': dict_weather.get('rain', False),
+                            'snow': dict_weather.get('snow', False),
+                            'time': dict_weather["dt_txt"][11:16]
+                        }
+                context['weather_dict'] = weather_dict
+        return context
+
 
 class GameArchiveListView(ListView):
     model = Game
     template_name = 'sunday_games/list_games.html'
 
     def get_queryset(self):
+        """Edit queryset for the year and the future"""
         year = self.request.GET.get('year')
         return Game.objects.filter(Q(date__year=year) & Q(is_future=False)).order_by('date')
 
     def get_context_data(self, **kwargs):
+        """Add year"""
         context = super(GameArchiveListView, self).get_context_data(**kwargs)
         context['archive'] = True
         context['year'] = self.request.GET.get('year')
@@ -47,7 +88,6 @@ class GameFormView(FormView):
 
 
 class GameEditView(View):
-
     def get(self, request, slug_game):
         game = Game.objects.get(slug=slug_game)
         form = SundayForms(instance=game)
@@ -58,5 +98,5 @@ class GameEditView(View):
         form = SundayForms(request.POST, instance=game)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('detail_game', args=(slug_game, )))
+            return HttpResponseRedirect(reverse('detail_game', args=(slug_game,)))
         return render(request, 'sunday_games/create_game.html', context={'form': form})
