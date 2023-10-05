@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView, FormView
 from requests import HTTPError
 
-from sunday_games.forms import SundayForms
+from sunday_games.forms import SundayForms, SundayArchiveForms
 from sunday_games.models import *
 
 
@@ -90,12 +90,18 @@ class GameFormView(FormView):
 class GameEditView(View):
     def get(self, request, slug_game):
         game = Game.objects.get(slug=slug_game)
-        form = SundayForms(instance=game)
+        if game.is_future:
+            form = SundayForms(instance=game)
+        else:
+            form = SundayArchiveForms(instance=game)
         return render(request, 'sunday_games/create_game.html', context={'form': form})
 
     def post(self, request, slug_game):
         game = Game.objects.get(slug=slug_game)
-        form = SundayForms(request.POST, instance=game)
+        if game.is_future:
+            form = SundayForms(request.POST, instance=game)
+        else:
+            form = SundayArchiveForms(request.POST, instance=game)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('detail_game', args=(slug_game,)))

@@ -19,7 +19,8 @@ class Game(models.Model):
     contribution = models.IntegerField(default=200)
     is_future = models.BooleanField(default=True)
     slug = models.SlugField(default='', null=False)
-    result = models.CharField(default='', max_length=1000)
+    result = models.CharField(default='', max_length=5000, blank=True)
+    result_foto = models.CharField(default='Фотографии будут позже', max_length=500, blank=True)
 
     def __str__(self):
         return f'{self.date} {self.polygon}'

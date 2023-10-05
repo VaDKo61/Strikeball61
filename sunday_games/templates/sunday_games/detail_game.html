@@ -108,11 +108,7 @@
             <p class="text-4">{{ game.result }}</p>
              <hr/>
             <h3>Фотографии с игры:</h3>
-            {% if game.goto_games %}
-                <img src=" {{ game.foto_games.url }} " class="img-left" alt="spruce meadows"/>
-            {% else %}
-                <p class="text-4">Фотографии будут позже</p>
-            {% endif %}
+            <p><a class="text" href=" {{ game.result_foto }} " target="_blank">{{ game.result_foto }}</a></p>
             <hr/>
         </div>
 
