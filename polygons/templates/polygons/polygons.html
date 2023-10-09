@@ -20,16 +20,18 @@
             <h2><a class="text" href="{{ polygon.get_url }}">{{ polygon.name }}</a></h2>
             <p><a class="block-right">{{ polygon.descriptions }}</a></p>
         </div>
+        <hr/>
         {% endfor %}
     </div><!--End column-1  -->
+
+    <div class="item">
+         <p><a class="text-5" href="{% url 'polygon-create' %}">Добавить полигон</a></p>
+    </div>
 
     <div class="column-1">
         <div class="item-2">
             {% include 'geomap/common.html' %}
         </div>
-    </div>
-    <div class="item">
-         <p><a class="text-5" href="{% url 'polygon-create' %}">Добавить полигон</a></p>
     </div>
 </div><!--End primary -->
 {% endblock %}

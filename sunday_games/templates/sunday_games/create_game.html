@@ -12,6 +12,7 @@
 
         <form method="post">
             {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
             {% for field in form %}
                 <h3>{{ field.label_tag }}</h3>
                 {{ field }}

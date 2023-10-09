@@ -1,4 +1,6 @@
 from django import forms
+from django.core.exceptions import ValidationError
+from pytils.translit import slugify
 
 from sunday_games.models import Game
 
@@ -6,8 +8,9 @@ from sunday_games.models import Game
 class SundayForms(forms.ModelForm):
     class Meta:
         model = Game
-        exclude = ('date', 'is_future', 'slug')
+        exclude = ('is_future', 'slug')
         labels = {
+            'date': 'Дата',
             'polygon': 'Полигон',
             'organizer': 'Организатор',
             'start': 'Начало игры',
@@ -23,6 +26,14 @@ class SundayForms(forms.ModelForm):
             'scenario': forms.Textarea(attrs={"cols": "80", "rows": "30"}),
             'result_foto': forms.Textarea(attrs={"cols": "80", "rows": "3"}),
         }
+
+    def clean(self):
+        cleaned_data = super(SundayForms, self).clean()
+        date = cleaned_data['date']
+        polygon = cleaned_data['polygon']
+        if date and polygon:
+            if slugify(f'{date} {polygon}') in [game.slug for game in Game.objects.all()]:
+                raise ValidationError('Игра на данную дату и полигон уже существует')
 
 
 class SundayArchiveForms(forms.ModelForm):

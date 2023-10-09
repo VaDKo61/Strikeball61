@@ -178,6 +178,11 @@
     background-color: #5a5a4e;
     display:inline
 }
+#primary .errorlist {
+    list-style: none;
+    color: #fd1100;
+}
+
 
 #primary .block-left {
     width: 470px;
