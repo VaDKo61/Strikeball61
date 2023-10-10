@@ -33,7 +33,7 @@ class SundayForms(forms.ModelForm):
         polygon = cleaned_data['polygon']
         if date and polygon:
             if slugify(f'{date} {polygon}') in [game.slug for game in Game.objects.all()]:
-                raise ValidationError('Игра на данную дату и полигон уже существует')
+                raise ValidationError('Игра на данную дату на данном полигоне уже запланирована')
 
 
 class SundayArchiveForms(forms.ModelForm):

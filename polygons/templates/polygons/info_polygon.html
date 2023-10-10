@@ -19,18 +19,18 @@
             <hr />
             <h3>Адрес и координаты:</h3>
             <p><a class="text-2">{{ polygons.address }}</a></p>
-            <ul>
-                <li><a class="text-2">{{ polygons.lon }}, {{ polygons.lat }}</a></li>
+            <ul class="text-7">
+                <li><a class="text-2">{{ polygons.lon }}; {{ polygons.lat }}</a></li>
                 <li><a class="text" href="{{ polygons.url_yandex }}" target="_blank">{{ polygons.url_yandex|truncatechars:50 }}</a></li>
                 <li>
-                    <div>
+                    <div style="margin-top: 10px;">
                         {% include 'geomap/common.html' %}
                     </div>
                 </li>
             </ul>
         </div>
         <div class ="item">
-            <p><a class="text-5" href="{{ polygons.get_url_edit }}">Редактировать</a></p>
+            <a class="text-5" href="{{ polygons.get_url_edit }}">Редактировать</a>
         </div>
     </div><!--End column-1_2  -->
 </div><!--End primary -->

@@ -21,15 +21,14 @@
         <div class="item">
             <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows"/>
             <h3>Полигон:</h3>
-            <p class="text-4"> {{ game.polygon.name }} </p>
+            <p class="text-8"> {{ game.polygon.name }} </p>
             <h3>Дата:</h3>
-            <p class="submitted-2"> {{ game.date }} <br/><a class="text-5" href="{{ game.get_url }}">Информация</a>
+            <ul class="text-8"> {{ game.date }} <br/><a class="text-5" href="{{ game.get_url }}">Информация</a></ul>
         </div>
         {% endfor %}
         {% if not archive %}
-            <div class="item">
-                <p><a class="text-5" href="{% url 'create_game' %}">Добавить игру</a></p>
-            </div>
+            <a class="text-5" href="{% url 'create_game' %}">Добавить игру</a>
+        <hr/>
         {% endif %}
     </div><!--End column-1_1  -->
 

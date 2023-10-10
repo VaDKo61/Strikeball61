@@ -21,3 +21,7 @@ class PolygonForms(forms.ModelForm):
             'address': forms.Textarea(attrs={"cols": "40", "rows": "1"}),
             'descriptions': forms.Textarea(attrs={"cols": "40", "rows": "1"}),
         }
+
+    def clean(self):
+        cleaned_data = super(PolygonForms, self).clean()
+

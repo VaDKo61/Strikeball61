@@ -160,7 +160,6 @@ h1.site-logo a {
 #primary h1 a:hover {color: #badee1;}
 
 #primary p.subhead {
-    color: #e8d4af;
     font-size: 16px;
     font-family: Georgia, Palatino, serif;
     margin: 5px 0 15px 0;
@@ -168,7 +167,6 @@ h1.site-logo a {
 }
 
 #primary p {
-    color: #f4e6cc;
     font-size: 11px;
     font-family: arial, verdana, sans-serif;
     line-height: 15px;

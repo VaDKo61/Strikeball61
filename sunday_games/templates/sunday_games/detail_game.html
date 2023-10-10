@@ -13,14 +13,14 @@
     <p><a class="text-5" href="{{ game.polygon.get_url }}">{{ game.polygon }}</a></p>
     <hr/>
     <h3>Организатор:</h3>
-    <p class="text-4">{{ game.organizer }}</p>
+    <p class="text-7">{{ game.organizer }}</p>
     <hr/>
     {% if game.is_future %}
         <h3>Начало игры:</h3>
-            <p class="text-4">{{ game.start }}</p>
+            <p class="text-7">{{ game.start }}</p>
             <hr/>
             <h3>Взнос:</h3>
-            <p class="text-4">{{ game.contribution }} руб.</p>
+            <p class="text-7">{{ game.contribution }} руб.</p>
             <hr/>
     {% endif %}
     <h3>Сценарий:</h3>
@@ -98,7 +98,7 @@
                     </tr>
                 </table>
             {% else %}
-                <p class="text-4">До события еще много дней</p>
+                <p class="text-4">До события еще много дней или уже прошло</p>
             {% endif %}
             <hr/>
         </div>

@@ -10,28 +10,21 @@
     <div class="column-1">
         <div class="item">
             <h1 class="page-title">{{ team.name }}</h1>
-            <p>
-            <p><a class="text-4">{{ team.descriptions }}</a></p>
-            <hr />
             {% if team.logo %}
-                <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
+                <img src="{{ team.logo.url }}" class="img-center" alt="{{ team.name }}"/>
             {% else %}
                 <img src="{% static 'images/no-logo.jpg' %}" class="img-left" alt="{{ team.name }}"/>
             {% endif%}
-        </div>
-    </div>
-    <div class="column-1">
-        <h3>Состав:</h3>
-        <div class="item">
+            <ul class="text-7"> {{ team.descriptions }} </ul>
+            <h3>Состав:</h3>
             {% for player in team.in_team.all %}
-                <ul>
+                <ul class="text-7">
                     <li class="text-3">{{ player.second_name }} {{ player.first_name }}</li>
                 </ul>
             {% endfor %}
+            <hr/>
+            <a class="text-5" href="{{ team.get_url_edit }}">Редактировать</a>
         </div>
-    </div>
-    <div class="item">
-        <p><a class="text-5" href="{{ team.get_url_edit }}">Редактировать</a></p>
     </div>
 </div>
 
