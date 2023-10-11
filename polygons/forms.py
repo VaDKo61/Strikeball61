@@ -1,4 +1,6 @@
 from django import forms
+from django.core.exceptions import ValidationError
+from pytils.translit import slugify
 
 from polygons.models import Polygons
 
@@ -22,6 +24,8 @@ class PolygonForms(forms.ModelForm):
             'descriptions': forms.Textarea(attrs={"cols": "40", "rows": "1"}),
         }
 
-    def clean(self):
-        cleaned_data = super(PolygonForms, self).clean()
-
+    def clean_name(self):
+        data = self.cleaned_data['name']
+        if Polygons.objects.filter(slug=slugify(data)).exists():
+            raise ValidationError(f'Полигон с названием "{data}" уже добавлен')
+        return data

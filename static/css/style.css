@@ -197,12 +197,6 @@
 }
 
 
-#primary .errorlist {
-    font-family: arial, verdana, sans-serif;
-    font-size: 11px;
-    background-color: #fd1100
-}
-
 #primary .block-left {
     width: 470px;
     height: 225px;
@@ -252,3 +246,19 @@
     height: 25px;
     color: #d1a773;
 }
+
+.errorlist {
+    font-family: arial, verdana, sans-serif;
+    font-size: 11px;
+    color: #e8d4af;
+}
+
+.errors input {
+    border-color: #fd1100;
+    background-color: #f4eeff;
+}
+
+.errors label {
+ color: #fd1100;
+}
+
