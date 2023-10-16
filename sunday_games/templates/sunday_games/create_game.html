@@ -9,13 +9,17 @@
     <h3>&#187; Воскрески</h3>
 
         <h1 class="page-title">Детали игры</h1>
-
         <form method="post">
             {% csrf_token %}
             {% for field in form %}
-                <h3>{{ field.label_tag }}</h3>
+                <div class="{% if form.non_field_errors and field.html_name == 'date' %} errors {% endif %}">
+                    <h3>{{ field.label_tag }}</h3>
+                    {% if field.html_name == "date" %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
                 {{ field }}
                 <hr/>
+                </div>
             {% endfor %}
             <button type="submit">Отправить</button>
             <hr/>

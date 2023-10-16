@@ -21,14 +21,15 @@
         <div class="item">
             <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows"/>
             <h3>Полигон:</h3>
-            <p class="text-4"> {{ game.polygon.name }} </p>
+            <p class="text-8"> {{ game.polygon.name }} </p>
             <h3>Дата:</h3>
-            <p class="submitted-2"> {{ game.date }} <br/><a class="text-5" href="{{ game.get_url }}">Информация</a>
+            <ul class="text-8"> {{ game.date }} <br/><a class="text-5" href="{{ game.get_url }}">Информация</a></ul>
         </div>
         {% endfor %}
-        <div class="item">
-            <p><a class="text-5" href="{% url 'create_game' %}">Добавить игру</a></p>
-        </div>
+        {% if not archive %}
+            <a class="text-5" href="{% url 'create_game' %}">Добавить игру</a>
+        <hr/>
+        {% endif %}
     </div><!--End column-1_1  -->
 
     <div class="column-2_2">
@@ -36,8 +37,8 @@
         <form action="{% url 'archive_game' %}" method="get">
             {% csrf_token %}
             <ul>
-                <li><input class="text-6" name="year" type="submit" value="2022" /></li>
-                <li><input class="text-6" name="year" type="submit" value="2023" /></li>
+                <li style="color: #d1a773;"><input class="text-6" name="year" type="submit" value="2022" /></li>
+                <li style="color: #d1a773;"><input class="text-6" name="year" type="submit" value="2023" /></li>
             </ul>
         </form>
     </div><!--End column-2_2  -->

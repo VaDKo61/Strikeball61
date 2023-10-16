@@ -17,8 +17,8 @@ class TeamDetailView(DetailView):
     model = Team
 
     def get_context_data(self, **kwargs):
+        """Add the players"""
         context = super(TeamDetailView, self).get_context_data(**kwargs)
-        # context['players'] = Player.objects.filter(team_id=self.object)
         context['players'] = Player.objects.all()
         return context
 

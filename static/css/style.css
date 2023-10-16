@@ -20,7 +20,6 @@
 #primary h1 a:hover {color: #badee1;}
 
 #primary p.subhead {
-    color: #e8d4af;
     font-size: 16px;
     font-family: Georgia, Palatino, serif;
     margin: 5px 0 15px 0;
@@ -37,9 +36,7 @@
     margin:0 0 10px;
 }
 
-#primary p,
-#primary li {
-    color: #f4e6cc;
+#primary p {
     font-size: 11px;
     font-family: arial, verdana, sans-serif;
     line-height: 15px;
@@ -71,15 +68,14 @@
 }
 
 #primary img.img-center {
-    margin: 0 20px 5px 0;
+    margin: 15px 20px 5px 0;
     float: center;
-    margin-bottom:30px;
+    margin-bottom:15px;
 }
 
 #primary .column-1 {
     width: 100%;
     float: left;
-    margin-top: 15px;
 }
 
 #primary .column-1_1 {
@@ -120,10 +116,11 @@
 }
 
 #primary .item-2 {
+    color: #e8d4af;
     width: 950px;
     border-bottom:1px dotted #8A8571;
     float:left;
-    margin-bottom:20px;
+    margin-bottom:10px;
     padding-bottom:15px;
 }
 
@@ -148,6 +145,7 @@
 }
 
 #primary .text-2 {
+    color: #e8d4af;
     font-size: 11px;
     line-height: 15px;
 }
@@ -157,15 +155,19 @@
 }
 
 #primary .text-4 {
-    font-size: 13px;
+    color: #e8d4af;
+    font-size: 11px;
+    width: 950px;
+    white-space: pre-wrap;
 }
 
 #primary .text-5 {
+    font-family: arial, verdana, sans-serif;
     text-decoration: none;
     color: #9fc5e8;
     text:active;
     text:hover;
-    font-size: 13px;
+    font-size: 11px;
     margin-right: 700px;
 }
 
@@ -178,20 +180,44 @@
     display:inline
 }
 
+#primary .text-7 {
+    color: #e8d4af;
+    font-size: 11px;
+    font-family: arial, verdana, sans-serif;
+    line-height: 15px;
+    margin-bottom: 15px;
+}
+
+#primary .text-8 {
+    color: #e8d4af;
+    font-size: 11px;
+    font-family: arial, verdana, sans-serif;
+    line-height: 15px;
+    margin-bottom: 15px;
+}
+
+
 #primary .block-left {
     width: 470px;
-    height: 250px;
+    height: 225px;
+    overflow: auto;
+    float:left;
+    margin-right:10px;
+    border-bottom:1px dotted #8A8571;
+    margin-bottom: 15px;
+}
+
+#primary .block-left-2 {
+    width: 100%;
+    height: 220px;
     overflow: auto;
     float:left;
     margin-right: 10px
 }
 
-#primary .block-left-2 {
-    width: 100%;
-    height: 250px;
-    overflow: auto;
+#primary .block-left-3 {
     float:left;
-    margin-right: 10px
+    width: 350px;
 }
 
 #primary .block-right {
@@ -203,3 +229,36 @@
     text: active;
     text: hover;
     }
+
+#primary .table {
+    font: Palatino;
+    width: 650px;
+    font-size: 14px;
+    color: #e8d4af;
+    text-align: center;
+}
+
+#primary td {
+    height: 25px;
+}
+
+#primary th {
+    height: 25px;
+    color: #d1a773;
+}
+
+.errorlist {
+    font-family: arial, verdana, sans-serif;
+    font-size: 11px;
+    color: #e8d4af;
+}
+
+.errors input {
+    border-color: #fd1100;
+    background-color: #f4eeff;
+}
+
+.errors label {
+ color: #fd1100;
+}
+

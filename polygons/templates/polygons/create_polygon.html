@@ -8,13 +8,16 @@
 <div id="primary">
     <h3>&#187; Полигоны</h3>
     <h1 class="page-title">Детали полигона</h1>
-
+    <p></p>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
+            <div class="{% if field.errors %} errors {% endif %}">
                 <h3>{{ field.label_tag }}</h3>
+                {{ field.errors }}
                 {{ field }}
                 <hr/>
+            </div>
             {% endfor %}
             <button type="submit">Отправить</button>
             <hr/>
