@@ -13,8 +13,12 @@
     <div class="feature-content">
         <h3>&#187; Игра друзей</h3>
         <h1><a href="#">Страйкбол</a></h1>
-        <p class="subhead">Ты молод и любишь активный отдых? Тогда страйкбол это для тебя!</p>
-        <p>Страйкбол – это командная военно-тактическая игра, в которой для поражения оппонента используется пневматическое оружие, стреляющее пластиковыми шариками</p>
+        <p style="color: #f4e6cc; font-size: 14px; font-family: arial, verdana, sans-serif; margin: 15px 0 15px 0; line-height: 20px;">
+            Ты молод и любишь активный отдых? Тогда страйкбол это для тебя!
+        </p>
+        <p style="color: #f4e6cc; font-size: 11px; font-family: arial, verdana, sans-serif; margin: 5px 0 15px 0; line-height: 15px;">
+            Страйкбол – это командная военно-тактическая игра, в которой для поражения оппонента используется пневматическое оружие, стреляющее пластиковыми шариками
+        </p>
     </div><!--End feature-content -->
 </div><!--End primary -->
 
@@ -29,7 +33,7 @@
                 <div class="item"><h4><a href="{{ team.get_url }}">{{ team.name }}</a></h4><p>{{ team.descriptions|truncatechars:30 }}</p></div>
                 {% endfor %}
                 <div class="clear-block"></div>
-                <p class="view-more"><a href="{% url 'team' %}">Больше &#187;</a>
+                <p><a class="view-more" href="{% url 'team' %}">Больше &#187;</a>
             </div><!--End column-->
 
             <div class="column">
@@ -37,7 +41,7 @@
                 <div class="item"><h4><a href="{{ polygon.get_url }}">{{ polygon.name }}</a></h4><p>{{ polygon.address|truncatechars:30 }}</p></div>
                 {% endfor %}
                 <div class="clear-block"></div>
-                <p class="view-more"><a href="{% url 'polygons' %}">Больше &#187;</a></p>
+                <p><a class="view-more" href="{% url 'polygons' %}">Больше &#187;</a></p>
             </div><!--End column-->
 
         </div><!--End inside -->

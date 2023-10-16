@@ -18,17 +18,6 @@ body {background: url(images/body.jpg) repeat;}
 
 p.view-more {margin-top: 10px;}
 
-p.view-more a { 
-    text-decoration: none;
-    font-family: Georgia, Palatino, serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    background: url(images/read-more.jpg) no-repeat center;
-    color: #b3b496;
-    padding: 7px 22px;
-}
-
 p.view-more a:hover {color: #E8D4AF;}
 
 hr {
@@ -166,12 +155,6 @@ h1.site-logo a {
     line-height: 20px;
 }
 
-#primary p {
-    font-size: 11px;
-    font-family: arial, verdana, sans-serif;
-    line-height: 15px;
-}
-
 /*Bottom Container ==============================    */
 #bottom-container {
     background: url(images/bottom.jpg) repeat-x;
@@ -201,6 +184,7 @@ h1.site-logo a {
 #secondary .column {
     float: left;
     width: 50%;
+    padding-bottom: 10px
 }
 
 #secondary img {
@@ -229,6 +213,17 @@ h1.site-logo a {
 #secondary .item {
     clear: both;
     margin-bottom: 15px;
+}
+
+#secondary .view-more {
+    text-decoration: none;
+    font-family: Georgia, Palatino, serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: url(images/read-more.jpg) no-repeat center;
+    color: #b3b496;
+    padding: 10px 22px;
 }
 
 /*Tertiary ==============================    */
