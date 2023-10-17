@@ -125,6 +125,21 @@
     padding-bottom:15px;
 }
 
+#primary .item-3 {
+    width: 100%;
+    float:left;
+    margin-bottom:10px;
+    padding-bottom:1px;
+}
+
+#primary .item-4 {
+    width: 100%;
+    border-bottom:1px dotted #8A8571;
+    float:left;
+    margin-bottom:10px;
+    padding-bottom:20px;
+}
+
 #primary ul,
 #primary ol {margin-bottom: 20px;}
 

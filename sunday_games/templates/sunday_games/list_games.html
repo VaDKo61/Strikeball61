@@ -18,17 +18,21 @@
 
     <div class="column-1_1">
         {% for game in object_list %}
-        <div class="item">
+        <div class="item-3">
             <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows"/>
             <h3>Полигон:</h3>
             <p class="text-8"> {{ game.polygon.name }} </p>
             <h3>Дата:</h3>
-            <ul class="text-8"> {{ game.date }} <br/><a class="text-5" href="{{ game.get_url }}">Информация</a></ul>
+            <ul class="text-8"> {{ game.date }} <br/></ul>
+        </div>
+        <div class="item-4">
+            <a class="view-more" href="{{ game.get_url }}">Подробнее &#187;</a>
         </div>
         {% endfor %}
         {% if not archive %}
-            <a class="text-5" href="{% url 'create_game' %}">Добавить игру</a>
-        <hr/>
+            <div class="item" style="margin-top:4px">
+                <a class="view-more" href="{% url 'create_game' %}">Добавить игру &#187;</a>
+            </div>
         {% endif %}
     </div><!--End column-1_1  -->
 
@@ -37,8 +41,8 @@
         <form action="{% url 'archive_game' %}" method="get">
             {% csrf_token %}
             <ul>
-                <li style="color: #d1a773;"><input class="text-6" name="year" type="submit" value="2022" /></li>
-                <li style="color: #d1a773;"><input class="text-6" name="year" type="submit" value="2023" /></li>
+                <li style="color: #f4e6cc;"><input class="text-6" name="year" type="submit" value="2022" /></li>
+                <li style="color: #f4e6cc;"><input class="text-6" name="year" type="submit" value="2023" /></li>
             </ul>
         </form>
     </div><!--End column-2_2  -->

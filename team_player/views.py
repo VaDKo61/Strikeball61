@@ -45,5 +45,5 @@ class TeamEditView(View):
         form = TeamForms(request.POST, instance=team)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('info_team', args=(team_slug, )))
+            return HttpResponseRedirect(reverse('info_team', args=(team.slug, )))
         return render(request, 'team_player/create_team.html', context={'form': form})

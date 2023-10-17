@@ -58,5 +58,5 @@ class PolygonEditView(View):
         form = PolygonForms(request.POST, instance=polygon)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('polygon-detail', args=(slug_polygon,)))
+            return HttpResponseRedirect(reverse('polygon-detail', args=(polygon.slug,)))
         return render(request, 'polygons/create_polygon.html', context={'form': form})

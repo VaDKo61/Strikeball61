@@ -14,7 +14,7 @@ class Game(models.Model):
     polygon = models.ForeignKey(Polygons, on_delete=models.CASCADE, null=True, related_name='games_polygon')
     organizer = models.CharField(max_length=50, choices=organizer_choose, default='STRIKE61')
     start = models.TimeField(default='10:00')
-    scenario = models.TextField(default='Будет позже', max_length=10000)
+    scenario = models.TextField(default='Сценарий будет позже', max_length=10000)
     foto_scenario = models.ImageField(upload_to='sunday_games_scenario', blank=True)
     contribution = models.IntegerField(default=200)
     is_future = models.BooleanField(default=True)

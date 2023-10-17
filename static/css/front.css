@@ -226,6 +226,7 @@ h1.site-logo a {
     padding: 10px 22px;
 }
 
+
 /*Tertiary ==============================    */
 
 #tertiary .inside {padding: 30px;}
@@ -241,7 +242,7 @@ h1.site-logo a {
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    margin: 10px 0 15px 0;
+    margin: 10px 0 10px 0;
     font-weight: normal;
 }
 
@@ -263,6 +264,26 @@ h1.site-logo a {
 }
 
 #tertiary p.view-more {margin-top: 20px;}
+
+#tertiary .text {
+    color: #e8d4af;;
+    font-size: 15px;
+    font-family: Georgia, Palatino, serif;
+    line-height: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#tertiary .view-more {
+    text-decoration: none;
+    font-family: Georgia, Palatino, serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: url(images/read-more.jpg) no-repeat center;
+    color: #b3b496;
+    padding: 10px 22px;
+}
 
 /*Footer ==============================    */
 

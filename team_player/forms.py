@@ -20,6 +20,8 @@ class TeamForms(forms.ModelForm):
 
     def clean_name(self):
         data = self.cleaned_data['name']
-        if Team.objects.filter(slug=slugify(data)).exists():
+        objects = Team.objects.filter(slug=slugify(data)).exclude(
+            id=self.initial['id']) if self.initial else Team.objects.filter(slug=slugify(data))
+        if objects.exists():
             raise ValidationError(f'Команда с именем "{data}" уже зарегестрирована')
         return data

@@ -26,6 +26,8 @@ class PolygonForms(forms.ModelForm):
 
     def clean_name(self):
         data = self.cleaned_data['name']
-        if Polygons.objects.filter(slug=slugify(data)).exists():
+        objects = Polygons.objects.filter(slug=slugify(data)).exclude(
+            id=self.initial['id']) if self.initial else Polygons.objects.filter(slug=slugify(data))
+        if objects.exists():
             raise ValidationError(f'Полигон с названием "{data}" уже добавлен')
         return data
