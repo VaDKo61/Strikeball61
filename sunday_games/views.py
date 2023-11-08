@@ -99,9 +99,9 @@ class GameEditView(View):
     def post(self, request, slug_game):
         game = Game.objects.get(slug=slug_game)
         if game.is_future:
-            form = SundayForms(request.POST, instance=game)
+            form = SundayForms(request.POST, request.FILES, instance=game)
         else:
-            form = SundayArchiveForms(request.POST, instance=game)
+            form = SundayArchiveForms(request.POST, request.FILES, instance=game)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('detail_game', args=(game.slug,)))

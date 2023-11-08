@@ -55,7 +55,7 @@ class PolygonEditView(View):
 
     def post(self, request, slug_polygon):
         polygon = Polygons.objects.get(slug=slug_polygon)
-        form = PolygonForms(request.POST, instance=polygon)
+        form = PolygonForms(request.POST, request.FILES, instance=polygon)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('polygon-detail', args=(polygon.slug,)))

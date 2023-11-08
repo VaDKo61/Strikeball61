@@ -42,7 +42,7 @@ class TeamEditView(View):
 
     def post(self, request, team_slug):
         team = Team.objects.get(slug=team_slug)
-        form = TeamForms(request.POST, instance=team)
+        form = TeamForms(request.POST, request.FILES, instance=team)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('info_team', args=(team.slug, )))
