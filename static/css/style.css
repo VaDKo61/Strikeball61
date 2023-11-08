@@ -109,6 +109,7 @@
 }
 
 #primary .item {
+    width: 100%;
     border-bottom:1px dotted #8A8571;
     float:left;
     margin-bottom:20px;
@@ -116,12 +117,27 @@
 }
 
 #primary .item-2 {
-    color: #e8d4af;
+    color: #f4e6cc;
     width: 950px;
     border-bottom:1px dotted #8A8571;
     float:left;
-    margin-bottom:10px;
+    margin-bottom:13px;
     padding-bottom:15px;
+}
+
+#primary .item-3 {
+    width: 100%;
+    float:left;
+    margin-bottom:10px;
+    padding-bottom:1px;
+}
+
+#primary .item-4 {
+    width: 100%;
+    border-bottom:1px dotted #8A8571;
+    float:left;
+    margin-bottom:10px;
+    padding-bottom:20px;
 }
 
 #primary ul,
@@ -145,7 +161,7 @@
 }
 
 #primary .text-2 {
-    color: #e8d4af;
+    color: #f4e6cc;
     font-size: 11px;
     line-height: 15px;
 }
@@ -155,7 +171,7 @@
 }
 
 #primary .text-4 {
-    color: #e8d4af;
+    color: #f4e6cc;
     font-size: 11px;
     width: 950px;
     white-space: pre-wrap;
@@ -181,7 +197,7 @@
 }
 
 #primary .text-7 {
-    color: #e8d4af;
+    color: #f4e6cc;
     font-size: 11px;
     font-family: arial, verdana, sans-serif;
     line-height: 15px;
@@ -189,11 +205,28 @@
 }
 
 #primary .text-8 {
-    color: #e8d4af;
+    color: #f4e6cc;
     font-size: 11px;
     font-family: arial, verdana, sans-serif;
     line-height: 15px;
     margin-bottom: 15px;
+}
+
+#primary .text-9 {
+    color: #d1a773;
+    font-size: 14px;
+    font-family: Georgia, Palatino, serif;
+    margin: 5px 0 15px 0;
+    line-height: 20px;
+}
+
+#primary .text-10 {
+    text-decoration: none;
+    color: #9fc5e8;
+    font-size: 14px;
+    font-family: Georgia, Palatino, serif;
+    margin: 5px 0 15px 0;
+    line-height: 20px;
 }
 
 
@@ -225,7 +258,7 @@
     height: 200px;
     overflow: auto;
     text-decoration: none;
-    color: #e8d4af;
+    color: #f4e6cc;
     text: active;
     text: hover;
     }
@@ -234,7 +267,7 @@
     font: Palatino;
     width: 650px;
     font-size: 14px;
-    color: #e8d4af;
+    color: #f4e6cc;
     text-align: center;
 }
 
@@ -247,10 +280,21 @@
     color: #d1a773;
 }
 
+#primary .view-more {
+    text-decoration: none;
+    font-family: Georgia, Palatino, serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: url(images/read-more.jpg) no-repeat center;
+    color: #b3b496;
+    padding: 22px 0px 22px 5px;
+}
+
 .errorlist {
     font-family: arial, verdana, sans-serif;
     font-size: 11px;
-    color: #e8d4af;
+    color: #f4e6cc;
 }
 
 .errors input {

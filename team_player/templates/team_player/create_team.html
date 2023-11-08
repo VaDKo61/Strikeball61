@@ -10,7 +10,7 @@
 
         <h1 class="page-title">Детали команды</h1>
     <p></p>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
             <div class=" {% if field.errors %} errors {% endif %}" >

@@ -32,8 +32,10 @@ class SundayForms(forms.ModelForm):
         date = cleaned_data['date']
         polygon = cleaned_data['polygon']
         if date and polygon:
-            if slugify(f'{date} {polygon}') in [game.slug for game in Game.objects.all()]:
+            objects = Game.objects.exclude(id=self.initial['id']) if self.initial else Game.objects.all()
+            if slugify(f'{date} {polygon}') in [game.slug for game in objects]:
                 raise ValidationError(f'Игра на {date.strftime("%d.%m.%Y")} на полигоне "{polygon}" уже запланирована')
+
 
 
 class SundayArchiveForms(forms.ModelForm):
