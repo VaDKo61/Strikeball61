@@ -8,11 +8,13 @@ from team_player.models import *
 
 
 class TeamListView(ListView):
+    """Info of all team"""
     template_name = 'team_player/all_team.html'
     model = Team
 
 
 class TeamDetailView(DetailView):
+    """Info of team"""
     template_name = 'team_player/info_team.html'
     model = Team
 
@@ -24,6 +26,7 @@ class TeamDetailView(DetailView):
 
 
 class TeamFormView(FormView):
+    """Create new team"""
     form_class = TeamForms
     template_name = 'team_player/create_team.html'
     success_url = '/team'
@@ -34,6 +37,7 @@ class TeamFormView(FormView):
 
 
 class TeamEditView(View):
+    """Edit team"""
 
     def get(self, request, team_slug):
         team = Team.objects.get(slug=team_slug)

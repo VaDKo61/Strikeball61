@@ -5,6 +5,7 @@ from pytils.translit import slugify
 
 
 class Team(models.Model):
+    """Team"""
     name = models.CharField(max_length=100)
     descriptions = models.CharField(max_length=200, default='')
     logo = models.ImageField(default='', upload_to='team', blank=True)
@@ -25,6 +26,7 @@ class Team(models.Model):
 
 
 class Player(models.Model):
+    """Player"""
     Men = 'M'
     Women = 'W'
     gender_choose = [

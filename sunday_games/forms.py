@@ -6,6 +6,7 @@ from sunday_games.models import Game
 
 
 class SundayForms(forms.ModelForm):
+    """Form of sunday game"""
     class Meta:
         model = Game
         exclude = ('is_future', 'slug')
@@ -28,6 +29,7 @@ class SundayForms(forms.ModelForm):
         }
 
     def clean(self):
+        """Validate of date and polygon(dubla)"""
         cleaned_data = super(SundayForms, self).clean()
         date = cleaned_data['date']
         polygon = cleaned_data['polygon']
@@ -37,8 +39,8 @@ class SundayForms(forms.ModelForm):
                 raise ValidationError(f'Игра на {date.strftime("%d.%m.%Y")} на полигоне "{polygon}" уже запланирована')
 
 
-
 class SundayArchiveForms(forms.ModelForm):
+    """Form of archive sunday game"""
     class Meta:
         model = Game
         fields = ('result', 'result_foto')

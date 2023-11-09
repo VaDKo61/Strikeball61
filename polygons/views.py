@@ -10,6 +10,7 @@ from .models import Polygons
 
 
 class PolygonsListView(ListView):
+    """Info of all polygons"""
     model = Polygons
     template_name = 'polygons/polygons.html'
 
@@ -23,6 +24,7 @@ class PolygonsListView(ListView):
 
 
 class PolygonDetailView(DetailView):
+    """Info of polygon"""
     model = Polygons
     template_name = 'polygons/info_polygon.html'
 
@@ -37,6 +39,7 @@ class PolygonDetailView(DetailView):
 
 
 class PolygonFormView(FormView):
+    """Add new polygon"""
     form_class = PolygonForms
     template_name = 'polygons/create_polygon.html'
     success_url = '/polygons'
@@ -47,6 +50,7 @@ class PolygonFormView(FormView):
 
 
 class PolygonEditView(View):
+    """Edit polygon"""
 
     def get(self, request, slug_polygon):
         polygon = Polygons.objects.get(slug=slug_polygon)

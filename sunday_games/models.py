@@ -8,6 +8,7 @@ from polygons.models import Polygons
 
 
 class Game(models.Model):
+    """Sunday game"""
     organizer_choose = [('STRIKE61', 'STRIKE61'),
                         ]
     date = models.DateField(verbose_name='date')

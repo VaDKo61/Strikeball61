@@ -6,6 +6,7 @@ from polygons.models import Polygons
 
 
 class PolygonForms(forms.ModelForm):
+    """Form of polygon"""
     class Meta:
         model = Polygons
         exclude = ('slug',)
@@ -25,6 +26,7 @@ class PolygonForms(forms.ModelForm):
         }
 
     def clean_name(self):
+        """Validate of name(dubla)"""
         data = self.cleaned_data['name']
         objects = Polygons.objects.filter(slug=slugify(data)).exclude(
             id=self.initial['id']) if self.initial else Polygons.objects.filter(slug=slugify(data))

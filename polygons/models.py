@@ -5,6 +5,7 @@ from pytils.translit import slugify
 
 
 class Polygons(models.Model, GeoItem):
+    """Polygons"""
     name = models.CharField(verbose_name='URL', max_length=50)
     address = models.CharField(max_length=100)
     descriptions = models.CharField(max_length=1000)

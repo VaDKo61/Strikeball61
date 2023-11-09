@@ -6,6 +6,7 @@ from team_player.models import Team
 
 
 class TeamForms(forms.ModelForm):
+    """Form of team"""
     class Meta:
         model = Team
         exclude = ('slug',)
@@ -19,6 +20,7 @@ class TeamForms(forms.ModelForm):
         }
 
     def clean_name(self):
+        """Validate of name (dubla)"""
         data = self.cleaned_data['name']
         objects = Team.objects.filter(slug=slugify(data)).exclude(
             id=self.initial['id']) if self.initial else Team.objects.filter(slug=slugify(data))

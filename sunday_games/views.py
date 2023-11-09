@@ -12,6 +12,7 @@ from sunday_games.models import *
 
 
 class GameListView(ListView):
+    """Info of all future sunday games"""
     model = Game
     template_name = 'sunday_games/list_games.html'
 
@@ -20,6 +21,7 @@ class GameListView(ListView):
 
 
 class GameDetailView(DetailView):
+    """Info of future sunday game"""
     model = Game
     template_name = 'sunday_games/detail_game.html'
 
@@ -61,16 +63,17 @@ class GameDetailView(DetailView):
 
 
 class GameArchiveListView(ListView):
+    """Archive of sunday games by year"""
     model = Game
     template_name = 'sunday_games/list_games.html'
 
     def get_queryset(self):
-        """Edit queryset for the year and the future"""
+        """Queryset by year and future"""
         year = self.request.GET.get('year')
         return Game.objects.filter(Q(date__year=year) & Q(is_future=False)).order_by('date')
 
     def get_context_data(self, **kwargs):
-        """Add year"""
+        """Add year in template"""
         context = super(GameArchiveListView, self).get_context_data(**kwargs)
         context['archive'] = True
         context['year'] = self.request.GET.get('year')
@@ -78,6 +81,7 @@ class GameArchiveListView(ListView):
 
 
 class GameFormView(FormView):
+    """Add new sunday game"""
     form_class = SundayForms
     template_name = 'sunday_games/create_game.html'
     success_url = '/sunday_games'
@@ -88,6 +92,7 @@ class GameFormView(FormView):
 
 
 class GameEditView(View):
+    """Edit sunday game"""
     def get(self, request, slug_game):
         game = Game.objects.get(slug=slug_game)
         if game.is_future:
