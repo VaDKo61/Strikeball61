@@ -42,8 +42,9 @@
                 <li><a href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
             <div class="search">
-                <form action="#" method="post">
-                    <p><input type="text" name="search" class="form-text" />
+                <form action="{% url 'search' %}" method="get">
+                    {% csrf_token %}
+                    <p><input type="search" name="search" class="form-text" />
                     <input type="submit" value="Поиск" class="form-submit" /></p>
                 </form>
             </div><!--End search  -->

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Результаты поиска: </h3>
+    <div id="navigation">
+        <div class="search" style="float: left;">
+            <form action="{% url 'search' %}" method="get">
+                {% csrf_token %}
+                <p><input type="search" name="search" class="form-text" value="{{ search }}"/>
+                <input type="submit" value="Поиск" class="form-submit" /></p>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock%}

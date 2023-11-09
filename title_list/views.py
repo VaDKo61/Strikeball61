@@ -1,8 +1,21 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from sunday_games.models import Game
 from team_player.models import Team
 from polygons.models import Polygons
+
+
+class Search(ListView):
+    """Search all"""
+    template_name = 'title_list/search.html'
+    model = Game
+
+    def get_context_data(self, **kwargs):
+        context = super(Search, self).get_context_data(**kwargs)
+        context['search'] = self.request.GET['search']
+        return context
+
 
 
 def main_page(request):
