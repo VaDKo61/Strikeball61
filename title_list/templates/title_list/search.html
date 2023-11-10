@@ -7,16 +7,16 @@
 
 <div id="primary">
     <h3>&#187; Результаты поиска: </h3>
-    <div id="navigation">
+    <div id="navigation" style="background-image: none; padding: 5px 0 0 0;">
         <div class="search" style="float: left;">
             <form action="{% url 'search' %}" method="get">
                 {% csrf_token %}
-                <p><input type="search" name="search" class="form-text" value="{{ search }}"/>
+                <p><input type="search" name="search" class="form-text" value="{{ search }}" style="width: 875px;"/>
                 <input type="submit" value="Поиск" class="form-submit" /></p>
             </form>
         </div>
     </div>
-
+    <p>{{sunday_games}}</p>
 
 
 </div>

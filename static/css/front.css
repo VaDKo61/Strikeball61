@@ -72,7 +72,7 @@ h1.site-logo a {
 
 #navigation a:hover {background: url(images/navigation-hover.jpg);}                              
 
-#navigation .search {float: right; }
+#navigation .search {float: right}
 
 #navigation .search input.form-text {
     background: url(images/form-text.jpg) repeat-x;
