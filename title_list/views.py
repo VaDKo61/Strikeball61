@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
 
@@ -15,9 +16,16 @@ class Search(ListView):
         context = super(Search, self).get_context_data(**kwargs)
         search = self.request.GET['search']
         context['search'] = search
-        Game.objects.all().select_related('polygon').filter(id=1)
-        sunday_games = Game.objects.get(polygon__iexact=search)
+        # Add in html sunday game matching search
+        search_int = int(search)
+        sunday_games = Game.objects.filter(Q(date__contains=search_int) | Q(organizer__iexact=Search))
         context['sunday_games'] = sunday_games
+        # Add in html sunday game matching search for polygon name
+        sunday_games_polygon = []
+        for game in Game.objects.all().select_related('polygon'):
+            if search.lower() in game.polygon.name.lower():
+                sunday_games_polygon.append(game)
+        context['sunday_games_polygon'] = sunday_games_polygon
         return context
 
 
