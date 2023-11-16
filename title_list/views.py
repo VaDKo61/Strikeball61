@@ -17,15 +17,11 @@ class Search(ListView):
         search = self.request.GET['search']
         context['search'] = search
         # Add in html sunday game matching search
-        search_int = int(search)
-        sunday_games = Game.objects.filter(Q(date__contains=search_int) | Q(organizer__iexact=Search))
+        search_int = int(search) if isinstance(search, int) else search
+        sunday_games = Game.objects.select_related('polygon').filter(
+            Q(polygon__name__iregex=search) | Q(date__contains=search_int) |
+            Q(organizer__contains=search)).order_by('date')
         context['sunday_games'] = sunday_games
-        # Add in html sunday game matching search for polygon name
-        sunday_games_polygon = []
-        for game in Game.objects.all().select_related('polygon'):
-            if search.lower() in game.polygon.name.lower():
-                sunday_games_polygon.append(game)
-        context['sunday_games_polygon'] = sunday_games_polygon
         return context
 
 

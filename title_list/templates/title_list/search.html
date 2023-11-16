@@ -16,8 +16,24 @@
             </form>
         </div>
     </div>
-    <p>{{sunday_games}}</p>
-    <p>{{sunday_games_polygon}}</p>
+    <h1 class="page-title">Ближайшие игры:</h1>
+    <div class="column-3">
+        {% for game in sunday_games %}
+        <div class="item-3">
+            <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows"/>
+            <h3>Полигон:</h3>
+            <p class="text-8"> {{ game.polygon.name }} </p>
+            <h3>Дата:</h3>
+            <ul class="text-8"> {{ game.date }} <br/></ul>
+            <h3>Организатор:</h3>
+            <ul class="text-8"> {{ game.organizer }} <br/></ul>
+        </div>
+        <div class="item-4">
+            <a class="view-more" href="{{ game.get_url }}">Подробнее &#187;</a>
+        </div>
+        {% endfor %}
+    </div>
+
 
 
 </div>

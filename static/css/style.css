@@ -79,7 +79,7 @@
 }
 
 #primary .column-1_1 {
-    width: 500px;
+    width: 700px;
     float: left;
     margin-top: 15px;
 }
@@ -93,6 +93,12 @@
 #primary .column-2_2 {
     width: 150px;
     float: right;
+    margin-top: 15px;
+}
+
+#primary .column-3 {
+    width: 960px;
+    float: left;
     margin-top: 15px;
 }
 
