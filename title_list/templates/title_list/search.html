@@ -16,9 +16,14 @@
             </form>
         </div>
     </div>
-    <h1 class="page-title">Ближайшие игры:</h1>
-    <div class="column-3">
-        {% for game in sunday_games %}
+    {% if not search_none %}
+        <h1 class="page-title">По запросу "<a style="color: #f4e6cc;">{{ search }}</a>" ничего не найдено </h1>
+    {% endif %}
+
+    {% if sunday_games_future %}
+        <h1 class="page-title">Ближайшие игры:</h1>
+        <div class="column-3">
+        {% for game in sunday_games_future %}
         <div class="item-3">
             <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows"/>
             <h3>Полигон:</h3>
@@ -33,6 +38,64 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
+
+    {% if sunday_games_archive %}
+        <h1 class="page-title">Архив игр:</h1>
+        <div class="column-3">
+        {% for game in sunday_games_archive %}
+        <div class="item-3">
+            <img src=" {{ game.polygon.image.url }} " class="img-left" alt="spruce meadows"/>
+            <h3>Полигон:</h3>
+            <p class="text-8"> {{ game.polygon.name }} </p>
+            <h3>Дата:</h3>
+            <ul class="text-8"> {{ game.date }} <br/></ul>
+            <h3>Организатор:</h3>
+            <ul class="text-8"> {{ game.organizer }} <br/></ul>
+        </div>
+        <div class="item-4">
+            <a class="view-more" href="{{ game.get_url }}">Подробнее &#187;</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if polygons %}
+        <h1 class="page-title">Полигоны:</h1>
+        <div class="column-3">
+        {% for polygon in polygons %}
+        <div class="block-left-2">
+            {% if polygon.image %}
+                <img src="{{ polygon.image.url }}" class="img-left" alt="{{ polygon.name }}"/>
+            {% else %}
+                <img src="{% static 'images/no-logo.jpg' %}" class="img-left" alt="{{ polygon.name }}"/>
+            {% endif%}
+            <h2><a class="text" href="{{ polygon.get_url }}">{{ polygon.name }}</a></h2>
+            <p><a class="block-right">{{ polygon.descriptions }}</a></p>
+        </div>
+        <hr/>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if teams %}
+        <h1 class="page-title">Команды:</h1>
+        <div class="column-3">
+            {% for team in teams %}
+                <div class="block-left">
+                    {% if team.logo %}
+                        <img src="{{ team.logo.url }}" class="img-left" alt="{{ team.name }}"/>
+                    {% else %}
+                        <img src="{% static 'images/no-logo.jpg' %}" class="img-left" alt="{{ team.name }}"/>
+                    {% endif%}
+                    <h2><a class="text" href="{{ team.get_url }}">{{ team.name }}</a></h2>
+                    <p><a class="block-right">{{ team.descriptions }}</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
 
 
 
