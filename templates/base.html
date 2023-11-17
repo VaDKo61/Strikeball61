@@ -30,9 +30,19 @@
 <body class="front">
 <div class="top-bar"></div><!--End top-bar -->
 <div id="container">
-
     <div id="header">
-        <h1 class="site-logo"><a href="{% url 'title' %}" class="pngfix">Paragon Stables</a></h1>
+        <div class="site-logo-1">
+            <h1 class="site-logo"><a href="{% url 'title' %}" class="pngfix"></a></h1>
+        </div>
+        <div class="auth">
+            <div class="search-1">
+                <form action="{% url 'search' %}" method="get">
+                    {% csrf_token %}
+                    <input type="submit" value="Войти" name="auth" class="form-submit">
+                </form>
+            </div>
+        </div>
+        <div class="footer"></div>
         <div id="navigation">
             <ul>
                 <li><a href="{% url 'title' %}">Главная</a></li>
