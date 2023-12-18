@@ -36,8 +36,7 @@
         </div>
         <div class="auth">
             <div class="search-1">
-                <form action="{% url 'search' %}" method="get">
-                    {% csrf_token %}
+                <form action="{% url 'auth' %}" method="get">
                     <input type="submit" value="Войти" name="auth" class="form-submit">
                 </form>
             </div>

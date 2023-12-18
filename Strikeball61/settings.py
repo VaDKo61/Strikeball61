@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sunday_games',
     'django_admin_geomap',
     'contacts',
+    'users',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Авторизация</h3>
+    <div class="item-2">
+        <p><a href="{% url 'register' %}" class="text">Зарегистрируйтесь<a/> если у вас нет еще аккуанта</p>
+    </div>
+</div>
+
+{% endblock %}
