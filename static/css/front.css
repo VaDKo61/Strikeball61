@@ -65,6 +65,24 @@ h1.site-logo a {
     left: 58%
 }
 
+#header .search-2 {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0%;
+    text-decoration: none;
+    color: #f4e6cc;
+    font-family: Georgia, Palatino, serif;
+    font-size: 15px;
+    font-weight: normal;
+
+}
+
+#header .text{
+    text-decoration: none;
+    color: #9fc5e8;
+}
+
 #header .search-1 input.form-submit {
     text-decoration: none;
     font-family: Georgia, Palatino, serif;

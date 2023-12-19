@@ -35,11 +35,24 @@
             <h1 class="site-logo"><a href="{% url 'title' %}" class="pngfix"></a></h1>
         </div>
         <div class="auth">
-            <div class="search-1">
-                <form action="{% url 'auth' %}" method="get">
-                    <input type="submit" value="Войти" name="auth" class="form-submit">
-                </form>
-            </div>
+                {% if request.user.is_authenticated %}
+                    <div class="search-2">
+                        <a href="{% url 'profile' %}" class="text">
+                            {% if user.first_name %}
+                                {{ user.first_name }} {{ user.last_name }}
+                            {% else %}
+                                {{ user.username }}
+                            {% endif %}
+                        </a> |
+                        <a href="{% url 'logout' %}" class="text">Выйти</a>
+                    </div>
+                {% else %}
+                    <div class="search-1">
+                        <form action="{% url 'auth' %}" method="get">
+                            <input type="submit" value="Войти" name="auth" class="form-submit">
+                        </form>
+                    </div>
+                {% endif %}
         </div>
         <div class="footer"></div>
         <div id="navigation">
