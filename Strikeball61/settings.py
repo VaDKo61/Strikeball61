@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_admin_geomap',
     'contacts',
     'users',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

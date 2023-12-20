@@ -4,7 +4,9 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.views.generic import FormView, ListView, DetailView
 
+from sunday_games.models import Game
 from users.forms import UserRegistrationForm, UserAuthenticationForm
+from users.models import UserInfo
 
 
 class UserRegistration(FormView):

@@ -18,12 +18,6 @@ class TeamDetailView(DetailView):
     template_name = 'team_player/info_team.html'
     model = Team
 
-    def get_context_data(self, **kwargs):
-        """Add the players"""
-        context = super(TeamDetailView, self).get_context_data(**kwargs)
-        context['players'] = Player.objects.all()
-        return context
-
 
 class TeamFormView(FormView):
     """Create new team"""
@@ -49,5 +43,5 @@ class TeamEditView(View):
         form = TeamForms(request.POST, request.FILES, instance=team)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('info_team', args=(team.slug, )))
+            return HttpResponseRedirect(reverse('info_team', args=(team.slug,)))
         return render(request, 'team_player/create_team.html', context={'form': form})
