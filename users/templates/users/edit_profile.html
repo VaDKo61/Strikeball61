@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Информация о игроке</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form_user %}
+                <div class="{% if field.errors %} errors {% endif %}">
+                    <h3>{{ field.label_tag }}</h3>
+                {{ field.errors }}
+                {{ field }}
+                <hr/>
+                </div>
+            {% endfor %}
+            {% for field in form_userinfo %}
+                <div class="{% if form.non_field_errors and field.html_name == 'date' %} errors {% endif %}">
+                    <h3>{{ field.label_tag }}</h3>
+                    {% if field.html_name == "date" %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
+                    {{ field }}
+                <hr/>
+                </div>
+            {% endfor %}
+            <button type="submit">Отправить</button>
+            <hr/>
+        </form>
+</div>
+
+{% endblock %}

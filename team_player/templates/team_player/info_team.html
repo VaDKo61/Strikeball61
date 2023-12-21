@@ -19,7 +19,7 @@
             <h3>Состав:</h3>
             {% for player in team.in_team.all %}
                 <ul class="text-7">
-                    <li class="text-3">{{ player.user.first_name }} {{ player.user.last_name }}</li>
+                    <li class="text-3"><a class="text" href="{{ player.get_url }}">{{ player.user.first_name }} {{ player.user.last_name }}</a></li>
                 </ul>
             {% endfor %}
             <hr/>
