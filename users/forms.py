@@ -1,6 +1,9 @@
+import re
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 from users.models import UserInfo
 
@@ -25,8 +28,15 @@ class UserEditForm(forms.ModelForm):
 
     class Meta:
         model = User
-        exclude = {'password', 'last_login', 'is_active', 'is_staff', 'is_active', 'is_superuser', 'groups',
-                   'user_permissions', 'username', 'date_joined'}
+        fields = {'first_name', 'last_name', 'email'}
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        pattern = r"^[-\w\.]+@([-\w]+\.)+[-\w]{2,4}$"
+        if re.match(pattern, email) is not None:
+            return email
+        else:
+            raise ValidationError('Введен не корректный email')
 
 
 class UserInfoEditForm(forms.ModelForm):
