@@ -1,5 +1,7 @@
 import json
 import requests
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -80,8 +82,9 @@ class GameArchiveListView(ListView):
         return context
 
 
-class GameFormView(FormView):
+class GameFormView(PermissionRequiredMixin, FormView):
     """Add new sunday game"""
+    permission_required = 'sunday_games.add_game'
     form_class = SundayForms
     template_name = 'sunday_games/create_game.html'
     success_url = '/sunday_games'
@@ -93,7 +96,10 @@ class GameFormView(FormView):
 
 class GameEditView(View):
     """Edit sunday game"""
+
     def get(self, request, slug_game):
+        if not request.user.has_perm('sunday_games.change_game'):
+            raise PermissionDenied('Нет прав для просмотра данной страницы')
         game = Game.objects.get(slug=slug_game)
         if game.is_future:
             form = SundayForms(instance=game)
@@ -111,3 +117,7 @@ class GameEditView(View):
             form.save()
             return HttpResponseRedirect(reverse('detail_game', args=(game.slug,)))
         return render(request, 'sunday_games/create_game.html', context={'form': form})
+
+
+def error_403(request, exception):
+    return render(request, '403.html')

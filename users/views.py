@@ -1,6 +1,8 @@
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -38,6 +40,8 @@ class EditProfileUserView(View):
     """Edit user"""
 
     def get(self, request, slug):
+        if not request.user.has_perm('users.change_userinfo'):
+            raise PermissionDenied('Нет прав для просмотра данной страницы')
         user_info = UserInfo.objects.get(slug=slug)
         form_userinfo = UserInfoEditForm(instance=user_info)
         user = User.objects.get(id=user_info.user_id)
@@ -60,10 +64,10 @@ class EditProfileUserView(View):
                           context={'form_userinfo': form_userinfo, 'form_user': form_user})
 
 
-def profile_info(request):
-    return render(request, 'users/profile.html')
-
-
 def logout_user(request):
     logout(request)
     return redirect('auth')
+
+
+def error_403(request, exception):
+    return render(request, '403.html')

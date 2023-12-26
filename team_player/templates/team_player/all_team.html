@@ -21,8 +21,10 @@
         </div>
         {% endfor %}
     </div><!--End column-1  -->
-    <div class="item">
-        <a class="view-more" href="{% url 'team_create' %}">Добавить команду &#187;</a>
-    </div>
+    {% if request.user.is_authenticated %}
+        <div class="item">
+            <a class="view-more" href="{% url 'team_create' %}">Добавить команду &#187;</a>
+        </div>
+    {% endif %}
 </div><!--End primary -->
 {% endblock %}

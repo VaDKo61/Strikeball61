@@ -22,8 +22,11 @@
                     <li class="text-3"><a class="text" href="{{ player.get_url }}">{{ player.user.first_name }} {{ player.user.last_name }}</a></li>
                 </ul>
             {% endfor %}
-            <hr/>
-            <a class="view-more" href="{{ team.get_url_edit }}">Редактировать &#187;</a>
+
+            {% if request.user.is_authenticated %}
+                <hr/>
+                <a class="view-more" href="{{ team.get_url_edit }}">Редактировать &#187;</a>
+            {% endif %}
         </div>
     </div>
 </div>

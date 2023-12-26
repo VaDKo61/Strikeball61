@@ -30,9 +30,11 @@
         </div>
         {% endfor %}
         {% if not archive %}
-            <div class="item" style="margin-top:4px">
-                <a class="view-more" href="{% url 'create_game' %}">Добавить игру &#187;</a>
-            </div>
+            {% if request.user.is_authenticated %}
+                <div class="item" style="margin-top:4px">
+                    <a class="view-more" href="{% url 'create_game' %}">Добавить игру &#187;</a>
+                </div>
+            {% endif %}
         {% endif %}
     </div><!--End column-1_1  -->
 

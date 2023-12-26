@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
 <link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
 
@@ -24,9 +23,11 @@
         {% endfor %}
     </div><!--End column-1  -->
 
-    <div class="item">
-         <a class="view-more" href="{% url 'polygon-create' %}">Добавить полигон &#187;</a>
-    </div>
+    {% if request.user.is_authenticated %}
+        <div class="item">
+             <a class="view-more" href="{% url 'polygon-create' %}">Добавить полигон &#187;</a>
+        </div>
+    {% endif%}
     <div class="column-1">
         <div class="item-2">
             {% include 'geomap/common.html' %}

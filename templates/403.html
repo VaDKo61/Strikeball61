@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Ошибки</h3>
+    <div class="column-1">
+        <p class="text-2">Недостаточно прав для просмтотра страницы, попробуйте <a href="{% url 'auth' %}" class="text"> авторизоваться</a></p>
+    </div>
+</div>
+
+{% endblock %}

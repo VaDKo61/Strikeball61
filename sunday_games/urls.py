@@ -8,3 +8,5 @@ urlpatterns = [
     path('create', GameFormView.as_view(), name='create_game'),
     path('edit/<str:slug_game>', GameEditView.as_view(), name='edit_game'),
 ]
+
+handler403 = 'sunday_games.views.error_403'

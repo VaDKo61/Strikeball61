@@ -37,7 +37,7 @@
         <div class="auth">
                 {% if request.user.is_authenticated %}
                     <div class="search-2">
-                        <a href="{% url 'profile' %}" class="text">
+                        <a href="{{ user.info.get_url }}" class="text">
                             {% if user.first_name %}
                                 {{ user.first_name }} {{ user.last_name }}
                             {% else %}

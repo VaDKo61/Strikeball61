@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -38,8 +40,9 @@ class PolygonDetailView(DetailView):
         return context
 
 
-class PolygonFormView(FormView):
+class PolygonFormView(PermissionRequiredMixin, FormView):
     """Add new polygon"""
+    permission_required = 'polygons.add_polygons'
     form_class = PolygonForms
     template_name = 'polygons/create_polygon.html'
     success_url = '/polygons'
@@ -53,6 +56,8 @@ class PolygonEditView(View):
     """Edit polygon"""
 
     def get(self, request, slug_polygon):
+        if not request.user.has_perm('polygons.change_polygons'):
+            raise PermissionDenied('Нет прав для просмотра данной страницы')
         polygon = Polygons.objects.get(slug=slug_polygon)
         form = PolygonForms(instance=polygon)
         return render(request, 'polygons/create_polygon.html', context={'form': form})
@@ -64,3 +69,7 @@ class PolygonEditView(View):
             form.save()
             return HttpResponseRedirect(reverse('polygon-detail', args=(polygon.slug,)))
         return render(request, 'polygons/create_polygon.html', context={'form': form})
+
+
+def error_403(request, exception):
+    return render(request, '403.html')

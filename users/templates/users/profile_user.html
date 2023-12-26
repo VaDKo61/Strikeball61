@@ -25,9 +25,11 @@
             <a class="text" style="font-family: arial, verdana, sans-serif; font-size: 11px" href="{{ user.info.team.get_url }}">{{ userinfo.team }}</a>
         </div>
     </div>
-    <div class="item">
-        <a class="view-more" href="{{ userinfo.get_url_edit }}">Редактировать &#187;</a>
-    </div>
+    {% if request.user.is_authenticated %}
+        <div class="item">
+            <a class="view-more" href="{{ userinfo.get_url_edit }}">Редактировать &#187;</a>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}

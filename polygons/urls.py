@@ -7,3 +7,5 @@ urlpatterns = [
     path('edit/<str:slug_polygon>', PolygonEditView.as_view(), name='polygon-edit'),
     path('<slug:slug>', PolygonDetailView.as_view(), name='polygon-detail'),
 ]
+
+handler403 = 'polygons.views.error_403'

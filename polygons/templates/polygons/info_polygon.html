@@ -29,9 +29,11 @@
                 </li>
             </ul>
         </div>
-        <div class="item">
-            <a class="view-more" href="{{ polygons.get_url_edit }}">Редактировать &#187;</a>
-        </div>
+        {% if request.user.is_authenticated %}
+            <div class="item">
+                <a class="view-more" href="{{ polygons.get_url_edit }}">Редактировать &#187;</a>
+            </div>
+        {% endif %}
     </div><!--End column-1_2  -->
 </div><!--End primary -->
 {% endblock %}
