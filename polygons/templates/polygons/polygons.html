@@ -23,7 +23,7 @@
         {% endfor %}
     </div><!--End column-1  -->
 
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_authenticated and 'add_polygons' in perms %}
         <div class="item">
              <a class="view-more" href="{% url 'polygon-create' %}">Добавить полигон &#187;</a>
         </div>

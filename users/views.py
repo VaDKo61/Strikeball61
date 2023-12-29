@@ -1,4 +1,4 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
@@ -22,6 +22,11 @@ class UserRegistration(FormView):
 
     def form_valid(self, form):
         form.save()
+        new_user = UserInfo(user=User.objects.get(username=form.cleaned_data['username']), team_id=11)
+        new_user.save()
+        user = authenticate(self.request, username=form.cleaned_data['username'],
+                            password=form.cleaned_data['password1'])
+        login(self.request, user)
         return super().form_valid(form)
 
 

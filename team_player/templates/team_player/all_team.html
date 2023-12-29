@@ -21,7 +21,7 @@
         </div>
         {% endfor %}
     </div><!--End column-1  -->
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_authenticated and 'add_team' in perms %}
         <div class="item">
             <a class="view-more" href="{% url 'team_create' %}">Добавить команду &#187;</a>
         </div>

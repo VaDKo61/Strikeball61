@@ -16,13 +16,16 @@
                 <img class="img-center" src="{% static 'images/no-logo.jpg' %}">
             {% endif %}
             <h3>Имя, фамилия, возраст:</h3>
-            <p><a class="text-2">{{ userinfo.user.first_name }} {{ userinfo.user.last_name }}, {{ userinfo.age }} лет</a></p>
+            <p><a class="text-2">{{ userinfo.user.first_name }}
+                {% if userinfo.user.last_name %} {{ userinfo.user.last_name }}, {% else %} {{ userinfo.user.last_name }} {% endif %}
+                {% if userinfo.age %} {{ userinfo.age }} лет {% else %} {% endif %}</a></p>
             <hr>
             <h3>Контакты:</h3>
-            <p><a class="text-2">{{ userinfo.phone }}, {{ userinfo.user.email }}</a></p>
+            <p><a class="text-2">{% if userinfo.phone %} {{ userinfo.phone }}, {% else %} {% endif %}
+                {{ userinfo.user.email }}</a></p>
             <hr>
             <h3>Сотоит в команде:</h3>
-            <a class="text" style="font-family: arial, verdana, sans-serif; font-size: 11px" href="{{ user.info.team.get_url }}">{{ userinfo.team }}</a>
+            <a class="text" style="font-family: arial, verdana, sans-serif; font-size: 11px" href="{{ userinfo.team.get_url }}">{{ userinfo.team }}</a>
         </div>
     </div>
     {% if request.user.is_authenticated %}

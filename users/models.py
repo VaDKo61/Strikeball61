@@ -17,7 +17,7 @@ class UserInfo(models.Model):
         (Women, 'Женщина')
     ]
     photo = models.ImageField(upload_to='user/', blank=True, null=True)
-    age = models.IntegerField()
+    age = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=1, choices=gender_choose, default='M')
     team = models.ForeignKey(Team, on_delete=models.CASCADE, blank=True, null=True, related_name='in_team')
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=False, related_name='info')
