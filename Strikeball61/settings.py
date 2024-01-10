@@ -132,3 +132,13 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = 'v.morozov2020@yandex.ru'
+EMAIL_HOST_PASSWORD = 'lomipqkqvdrkitdi'
+DEFAULT_FROM_EMAIL = 'v.morozov2020@yandex.ru'
