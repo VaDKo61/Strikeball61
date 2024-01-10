@@ -7,3 +7,5 @@ urlpatterns = [
     path('edit/<str:team_slug>', TeamEditView.as_view(), name='team_edit'),
     path('<slug:slug>', TeamDetailView.as_view(), name='info_team'),
 ]
+
+handler403 = 'team_player.views.error_403'

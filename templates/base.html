@@ -30,9 +30,31 @@
 <body class="front">
 <div class="top-bar"></div><!--End top-bar -->
 <div id="container">
-
     <div id="header">
-        <h1 class="site-logo"><a href="{% url 'title' %}" class="pngfix">Paragon Stables</a></h1>
+        <div class="site-logo-1">
+            <h1 class="site-logo"><a href="{% url 'title' %}" class="pngfix"></a></h1>
+        </div>
+        <div class="auth">
+                {% if request.user.is_authenticated %}
+                    <div class="search-2">
+                        <a href="{{ user.info.get_url }}" class="text">
+                            {% if user.first_name %}
+                                {{ user.first_name }} {{ user.last_name }}
+                            {% else %}
+                                {{ user.username }}
+                            {% endif %}
+                        </a> |
+                        <a href="{% url 'logout' %}" class="text">Выйти</a>
+                    </div>
+                {% else %}
+                    <div class="search-1">
+                        <form action="{% url 'auth' %}" method="get">
+                            <input type="submit" value="Войти" name="auth" class="form-submit">
+                        </form>
+                    </div>
+                {% endif %}
+        </div>
+        <div class="footer"></div>
         <div id="navigation">
             <ul>
                 <li><a href="{% url 'title' %}">Главная</a></li>

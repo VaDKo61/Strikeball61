@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-ek4h69y#%$q$x0$brd987cll*u=@bq9a!wz!+rph%9=9sc!7_g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 
 # Application definition
 
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'sunday_games',
     'django_admin_geomap',
     'contacts',
+    'users',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -124,8 +126,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+LOGIN_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = 'v.morozov2020@yandex.ru'
+EMAIL_HOST_PASSWORD = 'lomipqkqvdrkitdi'
+DEFAULT_FROM_EMAIL = 'v.morozov2020@yandex.ru'

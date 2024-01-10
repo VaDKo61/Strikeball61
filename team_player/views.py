@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
@@ -18,15 +20,10 @@ class TeamDetailView(DetailView):
     template_name = 'team_player/info_team.html'
     model = Team
 
-    def get_context_data(self, **kwargs):
-        """Add the players"""
-        context = super(TeamDetailView, self).get_context_data(**kwargs)
-        context['players'] = Player.objects.all()
-        return context
 
-
-class TeamFormView(FormView):
+class TeamFormView(PermissionRequiredMixin, FormView):
     """Create new team"""
+    permission_required = 'team_player.add_team'
     form_class = TeamForms
     template_name = 'team_player/create_team.html'
     success_url = '/team'
@@ -40,6 +37,8 @@ class TeamEditView(View):
     """Edit team"""
 
     def get(self, request, team_slug):
+        if not request.user.has_perm('team_player.change_team'):
+            raise PermissionDenied('Нет прав для просмотра данной страницы')
         team = Team.objects.get(slug=team_slug)
         form = TeamForms(instance=team)
         return render(request, 'team_player/create_team.html', context={'form': form})
@@ -49,5 +48,9 @@ class TeamEditView(View):
         form = TeamForms(request.POST, request.FILES, instance=team)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('info_team', args=(team.slug, )))
+            return HttpResponseRedirect(reverse('info_team', args=(team.slug,)))
         return render(request, 'team_player/create_team.html', context={'form': form})
+
+
+def error_403(request, exception):
+    return render(request, '403.html')

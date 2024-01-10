@@ -12,7 +12,8 @@ body {background: url(images/body.jpg) repeat;}
 #container {
     width: 960px;
     margin: 0 auto;
-    background: url(images/glow.jpg) top center no-repeat;
+    background: url(images/glow.jpg) no-repeat;
+    background-position: 50% 0%;
     padding-top: 25px;
 }
 
@@ -39,8 +40,66 @@ h1.site-logo a {
     height:0 !important;
     overflow:hidden !important;
     padding-top:94px;
-    width:231px; 
-    margin: 0 auto 10px auto; 
+    width:231px;
+    margin: 0 0px 10px auto;
+}
+
+#header .site-logo-1{
+    width: 64%;
+    float: left;
+}
+#header .auth{
+    width: 36%;
+    float: right;
+    height: 104px;
+    position: relative
+}
+#header .footer{
+    clear: left;
+}
+
+#header .search-1 {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 77%
+}
+
+#header .search-2 {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0%;
+    text-decoration: none;
+    color: #f4e6cc;
+    font-family: Georgia, Palatino, serif;
+    font-size: 15px;
+    font-weight: normal;
+
+}
+
+#header .text{
+    text-decoration: none;
+    color: #9fc5e8;
+}
+
+#header .search-1 input.form-submit {
+    text-decoration: none;
+    font-family: Georgia, Palatino, serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    height: 27px;
+    width: 81px;
+    text-align: center;
+    border: none;
+    background: url(images/navigation-hover.jpg) no-repeat;
+    color: #b3b496;
+}
+
+#header .search-1 input.form-submit:hover {
+    cursor: pointer;
+    color: #E8D4AF;
 }
 
 /* Navigation and Search ==============================    */  

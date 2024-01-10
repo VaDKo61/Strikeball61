@@ -13,17 +13,20 @@
             {% if team.logo %}
                 <img src="{{ team.logo.url }}" class="img-center" alt="{{ team.name }}"/>
             {% else %}
-                <img src="{% static 'images/no-logo.jpg' %}" class="img-left" alt="{{ team.name }}"/>
+                <img src="{% static 'images/no-logo.jpg' %}" class="img-center" alt="{{ team.name }}"/>
             {% endif%}
             <ul class="text-7"> {{ team.descriptions }} </ul>
             <h3>Состав:</h3>
             {% for player in team.in_team.all %}
                 <ul class="text-7">
-                    <li class="text-3">{{ player.second_name }} {{ player.first_name }}</li>
+                    <li class="text-3"><a class="text" href="{{ player.get_url }}">{{ player.user.first_name }} {{ player.user.last_name }}</a></li>
                 </ul>
             {% endfor %}
-            <hr/>
-            <a class="view-more" href="{{ team.get_url_edit }}">Редактировать &#187;</a>
+
+            {% if request.user.is_authenticated and 'change_team' in perms %}
+                <hr/>
+                <a class="view-more" href="{{ team.get_url_edit }}">Редактировать &#187;</a>
+            {% endif %}
         </div>
     </div>
 </div>

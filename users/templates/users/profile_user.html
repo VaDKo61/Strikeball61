@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Информация о игроке</h3>
+    <h1 class="page-title">{{ userinfo.user.first_name }} {{ userinfo.user.last_name }}</h1>
+    <div class="column-1">
+        <div class="item-2">
+            {% if userinfo.photo %}
+                <img class="img-center" src="{{ userinfo.photo.url }}">
+            {% else %}
+                <img class="img-center" src="{% static 'images/no-logo.jpg' %}">
+            {% endif %}
+            <h3>Имя, фамилия, возраст:</h3>
+            <p><a class="text-2">{{ userinfo.user.first_name }}
+                {% if userinfo.user.last_name %} {{ userinfo.user.last_name }}, {% else %} {{ userinfo.user.last_name }} {% endif %}
+                {% if userinfo.age %} {{ userinfo.age }} лет {% else %} {% endif %}</a></p>
+            <hr>
+            <h3>Контакты:</h3>
+            <p><a class="text-2">{% if userinfo.phone %} {{ userinfo.phone }}, {% else %} {% endif %}
+                {{ userinfo.user.email }}</a></p>
+            <hr>
+            <h3>Сотоит в команде:</h3>
+            <a class="text" style="font-family: arial, verdana, sans-serif; font-size: 11px" href="{{ userinfo.team.get_url }}">{{ userinfo.team }}</a>
+        </div>
+    </div>
+    {% if request.user.is_authenticated %}
+        <div class="item">
+            <a class="view-more" href="{{ userinfo.get_url_edit }}">Редактировать &#187;</a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" media="all" rel="stylesheet" type="text/css"/>
+
+<div id="primary">
+    <h3>&#187; Авторизация</h3>
+    <div style="padding-bottom: 1px;" class="item-2">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors}}
+            {% for field in form %}
+                <div class="{% if field.errors %} errors {% endif %}">
+                    <div class="field">
+                        <labal>{{ field.label_tag }}</labal>
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                </div>
+            {% endfor %}
+            <p><a class="text" href="{% url 'password_reset_user' %}" style="margin-left: 260px">Забыли пароль?</a></p>
+            <button type="submit">Войти</button>
+        </form>
+        <p></p>
+        <p><a href="{% url 'register' %}" class="text">Зарегистрируйтесь<a/> если у вас нет еще аккуанта</p>
+    </div>
+</div>
+
+{% endblock %}
